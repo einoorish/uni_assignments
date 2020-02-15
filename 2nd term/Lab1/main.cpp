@@ -1,4 +1,6 @@
 #include "Database.h"
+#include <thread>
+#include <chrono>
 
 constexpr const char* DB_COMMANDS = "Commands available: \n1 - read database file content\n\t11 - filter file data by names\n\t12 - filter file data by quantity\n\t13 - filter file data by expiration date\n2 - edit db item\n3 - delete db item";
 constexpr const char* NEW_DATA_COMMANDS = "Commands available: \n1 - review entered data\n2 - add item\n3 - push data to binary file\n4 - write all data to text file\n5 - clear entered data";
@@ -137,84 +139,133 @@ void demoMode(){
     Database::outputColoredMessage("Opening database data.bin");
     Database db = Database("data.bin");
 
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+
     Database::outputColoredMessage("\n*Creating new item.\n\t Input is:\n\t\"Tomato 10 0 10 02 2020 10 20 50\"");//\n\t 1 Milk 5 3 12 01 2020 15 40 10\""
     std::istringstream input("Tomato 10 0 10 02 2020 10 20 50");
     std::cin.rdbuf(input.rdbuf());
     std::streambuf *old = std::cout.rdbuf(nullptr);
+
     //Redirecting output to avoid showing messages e.g "File is empty or does not exist."
     db.add_item_to_memory();
     std::cout.rdbuf(old);
 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     Database::outputColoredMessage("*Reading entered data:");
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     db.output_entered_data();
+
+    std::this_thread::sleep_for(std::chrono::seconds(3));
 
     Database::outputColoredMessage("\n*Adding data from memory to database(binary file)");
     db.save_to_binary_file();
 
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+
     std::cout << std::endl;
     Database::outputColoredMessage("*Reading file data.bin again");
     db.read_bin_file();
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     Database::outputColoredMessage("Result: ");
     db.output_file_data();
 
 
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+
     std::cout << std::endl;
     Database::outputColoredMessage("*Edit item at index 0 in database");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     Database::outputColoredMessage("Enter item index: \n\tInput is: 0");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     Database::outputColoredMessage("Enter updated data for this item: \n\tInput is: \"Milk 5 3 12 01 2020 15 40 10\"");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     input = std::istringstream("0 Milk 5 3 12 01 2020 15 40 10");
     std::cin.rdbuf(input.rdbuf());
     old = std::cout.rdbuf(nullptr);
     db.edit_item();
     std::cout.rdbuf(old);
+    std::this_thread::sleep_for(std::chrono::seconds(3));
 
     Database::outputColoredMessage("\nOutput all data:\n");
     db.output_all_data();
 
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+
     Database::outputColoredMessage("\n*Adding another item to memory. Input is: \"Unicorn_Meat 5 1 12/12/2020 00:00 4\"");
     std::istringstream iss("Unicorn_Meat 5 1 12/12/2020 00:00 4");
+
     std::cin.rdbuf(iss.rdbuf());
     old = std::cout.rdbuf(nullptr);
     db.add_item_to_memory();
     std::cout.rdbuf(old);
 
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+
     Database::outputColoredMessage("\n*Adding data from memory to database");
     db.save_to_binary_file();
     std::cout << std::endl;
+
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+
     Database::outputColoredMessage("*Reading database");
     db.read_bin_file();
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 
     Database::outputColoredMessage("\tResult (all): ");
     db.output_all_data();
 
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+
     Database::outputColoredMessage("\n*Filter database entries by name. Input is: \"Un\"\nResult: ");
     db.filter_by_names("Un");
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 
     Database::outputColoredMessage("\n*Filter file data by quantity. Input is: \"6\"\nResult: ");
     db.filter_by_quantity(6);
 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     Database::outputColoredMessage("\n*Filter file data by date. Input is: \"20/10/2020 10:10\"");
     db.filter_by_expiration_term(Date(20,10,2020,10,10));
+
+    std::this_thread::sleep_for(std::chrono::seconds(4));
 
     Database::outputColoredMessage("\n*Deleting item 2 from database.");
     old = std::cout.rdbuf(nullptr);
     iss = std::istringstream ("2");
     std::cin.rdbuf(iss.rdbuf());
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     db.delete_item();
     std::cout.rdbuf(old);
 
     Database::outputColoredMessage("*Deleting item 1 from database.\n");
+
     old = std::cout.rdbuf(nullptr);
     iss = std::istringstream ("1");
     std::cin.rdbuf(iss.rdbuf());
     db.delete_item();
     std::cout.rdbuf(old);
 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
     Database::outputColoredMessage("\tResult (all): ");
     db.output_all_data();
+
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+
     Database::outputColoredMessage("\n*Saving all data to text file \"data.txt\"\n");
     db.join_file_data_and_new_data();
     db.save_to_txt_file();
 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     Database::outputColoredMessage("End of Demo Mode.");
 }
