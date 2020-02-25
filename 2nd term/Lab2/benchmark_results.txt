@@ -1,0 +1,12 @@
+LINKED LIST STACK--------
+Pushing 50000000 elements took 3.781 seconds
+Peeking the 50000000th element took 3.781 seconds
+Popping 50000000 elements took 4.187 seconds
+STATIC ARRAY STACK--------
+Pushing 50000000 elements took 4.531 seconds
+Peeking the 50000000th element took 4.531 seconds
+Popping 50000000 elements took 4.89 seconds
+DYNAMIC ARRAY STACK--------
+Pushing 50000000 elements took 5.811 seconds
+Peeking the 50000000th element took 5.811 seconds
+Popping 50000000 elements took 7.702 seconds
