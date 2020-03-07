@@ -3,4 +3,4 @@ project(Lab2_b)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab2_b main.cpp PriorityQueue.cpp PriorityQueue.h)
+add_executable(Lab2_b main.cpp PriorityQueue.h)
