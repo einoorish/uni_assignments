@@ -1,14 +1,18 @@
 #include <iostream>
 #include "PriorityQueue.h"
 #include "SkipList.h"
+#include "SimpleSkipList.h"
+
 
 void priorityQueue_test(){
     PriorityQueue<int> pq = PriorityQueue<int>();
+
     try{
         pq.dequeue();
     } catch (std::exception& e ){
         std::cout<< e.what();
     }
+
     pq.enqueue(4,1);
     pq.enqueue(5,2);
     pq.enqueue(6,3);
@@ -22,19 +26,26 @@ void priorityQueue_test(){
 }
 
 void skipList_test(){
-    SkipList<int> list;
+    SimpleSkipList<int> list;
 
-    list.insert(3);
-    list.insert(63);
-    list.insert(13);
-    list.insert(33);
-    list.insert(43);
-    list.insert(56);
-    list.insert(70);
+    for(int i = 0; i<30; i++){
+        list.insert(rand()%200);
+    }
 
-    list.printAllLevels();
+    list.insert(30);
+    list.insert(-40);
+    list.insert(10);
+    list.insert(50);
+    list.insert(20);
+    list.insert(999);
 
-    std::cout << list.find(63)->data;
+    std::cout << std::endl;
+    list.printBottomLevel();
+
+    std::cout << std::endl <<  list.find(10);// returns 1
+    std::cout << std::endl <<  list.find(-40);// returns 1
+    std::cout << std::endl <<  list.find(-99);// returns 0
+    std::cout << std::endl <<  list.find(999);// returns 1
 }
 
 int main() {
