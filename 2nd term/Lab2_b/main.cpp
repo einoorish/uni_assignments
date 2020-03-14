@@ -26,26 +26,26 @@ void priorityQueue_test(){
 }
 
 void skipList_test(){
-    SimpleSkipList<int> list;
+    SkipList<int> list;
 
-    for(int i = 0; i<30; i++){
-        list.insert(rand()%200);
+    for(int i = 0; i<15; i++){
+        list.insert(rand()%300);
     }
 
-    list.insert(30);
+    list.insert(100);
     list.insert(-40);
-    list.insert(10);
-    list.insert(50);
-    list.insert(20);
     list.insert(999);
 
-    std::cout << std::endl;
+    std::cout << "All lvls of the list:" << std::endl;
+    list.printAllLevels();
+
+    std::cout << "\nBottom lvl of the list:" << std::endl;
     list.printBottomLevel();
 
-    std::cout << std::endl <<  list.find(10);// returns 1
-    std::cout << std::endl <<  list.find(-40);// returns 1
-    std::cout << std::endl <<  list.find(-99);// returns 0
-    std::cout << std::endl <<  list.find(999);// returns 1
+    std::cout << std::endl << "\nfind(100) returns " << list.find(100);
+    std::cout << std::endl << "find(-40) returns " << list.find(-40);//returns 0
+    std::cout << std::endl << "find(2000) returns " << list.find(2000);// returns -1
+    std::cout << std::endl << "find(999) returns " << list.find(999);
 }
 
 int main() {
