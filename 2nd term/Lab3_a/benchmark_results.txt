@@ -1,0 +1,99 @@
+
+--------------------------------------- Random array --------------------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 1000 RANDOM ELEMENTS
+Sorting took 0
+
+QUICK SORT FOR ARRAY OF 1000 RANDOM ELEMENTS
+Sorting took 0
+
+MERGE SORT FOR ARRAY OF 1000 RANDOM ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 10000 RANDOM ELEMENTS
+Sorting took 0.125
+
+QUICK SORT FOR ARRAY OF 10000 RANDOM ELEMENTS
+Sorting took 0
+
+MERGE SORT FOR ARRAY OF 10000 RANDOM ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+QUICK SORT FOR ARRAY OF 100000 RANDOM ELEMENTS
+Sorting took 0.016
+
+MERGE SORT FOR ARRAY OF 100000 RANDOM ELEMENTS
+Sorting took 0.016
+
+--------------------------------------- Almost sorted array --------------------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 1000 ALMOST SORTED ELEMENTS
+Sorting took 0
+
+QUICK SORT FOR ARRAY OF 1000 ALMOST SORTED ELEMENTS
+Sorting took 0
+
+MERGE SORT FOR ARRAY OF 1000 ALMOST SORTED ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 10000 ALMOST SORTED ELEMENTS
+Sorting took 0.125
+
+QUICK SORT FOR ARRAY OF 10000 ALMOST SORTED ELEMENTS
+Sorting took 0.328
+
+MERGE SORT FOR ARRAY OF 10000 ALMOST SORTED ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+QUICK SORT FOR ARRAY OF 100000 ALMOST SORTED ELEMENTS
+Sorting took 26.656
+
+MERGE SORT FOR ARRAY OF 100000 ALMOST SORTED ELEMENTS
+Sorting took 0
+
+--------------------------------------- Reversed array--------------------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 1000 REVERSE ORDERED ELEMENTS
+Sorting took 0.015
+
+QUICK SORT FOR ARRAY OF 1000 REVERSE ORDERED ELEMENTS
+Sorting took 0
+
+MERGE SORT FOR ARRAY OF 1000 REVERSE ORDERED ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+SELECTION SORT FOR ARRAY OF 10000 REVERSE ORDERED ELEMENTS
+Sorting took 0.11
+
+QUICK SORT FOR ARRAY OF 10000 REVERSE ORDERED ELEMENTS
+Sorting took 0.187
+
+MERGE SORT FOR ARRAY OF 10000 REVERSE ORDERED ELEMENTS
+Sorting took 0
+
+-------------------------- 
+
+
+QUICK SORT FOR ARRAY OF 100000 REVERSE ORDERED ELEMENTS
+Sorting took 19.219
+
+MERGE SORT FOR ARRAY OF 100000 REVERSE ORDERED ELEMENTS
+Sorting took 0
