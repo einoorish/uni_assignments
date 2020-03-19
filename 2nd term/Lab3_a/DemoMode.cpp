@@ -5,20 +5,22 @@ extern void printArray(int *arr, int size);
 
 namespace demo {
 
+    int command, size;
+
     void demoMode() {
 
-        int command;
         std::cout << std::endl << "1 - selection sort\n2 - quick sort\n3 - merge sort\n4 - combination sort" << std::endl;
         std::cin >> command;
 
-        int *arr = generateRandomArray(10);
+        std::cout << "Enter array size: "; std::cin >> size;
+        int *arr = generateRandomArray(size);
         std::cout << "Initial array: ";
-        printArray(arr, 10);
+        printArray(arr, size);
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
         switch (command){
             case 1:
-                selectionSort(arr, 10);
+                selectionSort(arr);
                 break;
 
             case 2:
@@ -28,27 +30,27 @@ namespace demo {
                              << std::endl;
                 std::this_thread::sleep_for(std::chrono::seconds(5));
 
-                quickSort(arr, 0, 9);
+                quickSort(arr, 0, size-1);
                 break;
 
             case 3:
-                mergeSort(arr, 0, 9);
+                mergeSort(arr, 0, size-1);
                 break;
 
             case 4:
                 std::cout << "Combination Sort uses Selection Sort if array has <64 elements, otherwise it uses Quick Sort"<<std::endl;
                 std::this_thread::sleep_for(std::chrono::seconds(2));
 
-                combinationSort(arr,10);
+                combinationSort(arr);
                 break;
         }
 
         std::cout << "result: ";
-        printArray(arr, 10);
+        printArray(arr, size);
     }
 
 
-    void selectionSort(int *arr, int size) {
+    void selectionSort(int *arr) {
         printArray(arr, size);
         int index_of_min = 0;
         std::cout << "current index of minimum element: " << index_of_min << ", minimum value: " << arr[index_of_min] << std::endl << std::endl;
@@ -111,7 +113,7 @@ namespace demo {
 
             std::cout << "pivot value : " << arr[pivot] << " new pivot index: "<<pivot<< std::endl;
             std::cout << "array after placing pivot at its correct position: ";
-            printArray(arr, 10);
+            printArray(arr, size);
             std::this_thread::sleep_for(std::chrono::seconds(2));
 
             // tail call optimization to avoid stack overflow: recurse on smaller part, loop on larger part
@@ -211,15 +213,15 @@ namespace demo {
 
             std::this_thread::sleep_for(std::chrono::seconds(3));
             std::cout << std::endl<< "result: ";
-            printArray(arr, 10);
+            printArray(arr, size);
             std::this_thread::sleep_for(std::chrono::seconds(2));
         }
     }
 
 
-    void combinationSort(int *arr, int size) {
+    void combinationSort(int *arr) {
         if (size >= 64) quickSort(arr, 0, size - 1);
-        else selectionSort(arr, size);
+        else selectionSort(arr);
     }
 
 }

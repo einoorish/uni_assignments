@@ -1,9 +1,15 @@
+#include <algorithm>
 #include "BenchmarkMode.h"
 
 
 extern int* generateRandomArray(int size);
 
 namespace benchmark {
+
+    //passed as argument to testSort(...) in order to fit "void (*sort)(int* arr, int size)" pattern
+    void librarySort(int arr[], int size){
+        std::sort(arr, arr+size);
+    }
 
     //passed as argument to testSort(...) in order to fit "void (*sort)(int* arr, int size)" pattern
     void quickSort(int arr[], int size) {
@@ -52,6 +58,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "RANDOM ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "RANDOM ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "RANDOM ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "RANDOM ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -62,6 +69,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "RANDOM ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "RANDOM ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "RANDOM ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "RANDOM ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -71,6 +79,7 @@ namespace benchmark {
 
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "RANDOM ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "RANDOM ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "RANDOM ELEMENTS");
 
         std::cout << "2/3 Testing almost sorted arrays of size 1000, 10000 and 100000..." <<std::endl;
         fout<< "\n--------------------------------------- Almost sorted array --------------------------------------- \n\n";
@@ -86,6 +95,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "ALMOST SORTED ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "ALMOST SORTED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "ALMOST SORTED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "ALMOST SORTED ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -100,6 +110,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "ALMOST SORTED ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "ALMOST SORTED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "ALMOST SORTED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "ALMOST SORTED ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -113,6 +124,7 @@ namespace benchmark {
 
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "ALMOST SORTED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "ALMOST SORTED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "ALMOST SORTED ELEMENTS");
 
         std::cout << "3/3 Testing reversed sorted arrays of size 1000, 10000 and 100000..." <<std::endl;
         fout << "\n--------------------------------------- Reversed array--------------------------------------- \n\n";
@@ -125,6 +137,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "REVERSE ORDERED ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "REVERSE ORDERED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "REVERSE ORDERED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "REVERSE ORDERED ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -136,6 +149,7 @@ namespace benchmark {
         benchmarkHelper(fout, size, arr, selectionSort, "SELECTION SORT", "REVERSE ORDERED ELEMENTS");
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "REVERSE ORDERED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "REVERSE ORDERED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "REVERSE ORDERED ELEMENTS");
 
         fout << "\n-------------------------- \n" << std::endl;
 
@@ -146,6 +160,7 @@ namespace benchmark {
 
         benchmarkHelper(fout, size, arr, quickSort, "QUICK SORT", "REVERSE ORDERED ELEMENTS");
         benchmarkHelper(fout, size, arr, mergeSort, "MERGE SORT", "REVERSE ORDERED ELEMENTS");
+        benchmarkHelper(fout, size, arr, librarySort, "STL SORT", "REVERSE ORDERED ELEMENTS");
         fout.close();
         std::cout << "Benchmark finished. See results in \"benchmark_results.txt\"" <<std::endl;
     }

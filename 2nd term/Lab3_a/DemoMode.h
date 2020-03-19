@@ -10,9 +10,9 @@ namespace demo {
     void merge(int arr[], int start, int middle, int end);
     void mergeSort(int *arr, int left, int right);
 
-    void selectionSort(int *arr, int size);
+    void selectionSort(int *arr);
 
-    void combinationSort(int *arr, int size);
+    void combinationSort(int *arr);
 
     void demoMode();
 
