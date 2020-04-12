@@ -1,6 +1,7 @@
 #include "RadixSort.h"
 
 
+//Sorts only by EXPIRATION_PERIOD field
 void radixSort(Item* arr, int N) {
 
     int max = 499; // expiration period is always less than 500

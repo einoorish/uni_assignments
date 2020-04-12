@@ -6,7 +6,7 @@ int getIndex(std::string units){
 
 }
 
-//Counting sort only for UNITS
+//Sorts only by UNITS field
 void countingSort(Item* arr, int N){
 
     Item* result = new Item[N];
@@ -28,9 +28,8 @@ void countingSort(Item* arr, int N){
         count[index]--;
     }
 
-    // Copy the output array to arr, so that arr now
-    // contains sorted characters
-    for (int i = N-1; i >= 0; i--)
+    // copy the result to arr
+    for (int i = 0; i < N; i++)
         arr[i] = result[i];
 
     delete []result;

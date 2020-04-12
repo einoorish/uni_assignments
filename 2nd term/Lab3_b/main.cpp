@@ -9,6 +9,11 @@ static const char letters[] = "abcdefghijklmnopqrstuvwxyz";
 
 std::string getRandomString();
 Item getRandomItem();
+int getUnitIndex(std::string units){
+    for(int i = 0; i<UNITS_ARR_SIZE; i++)
+        if(units == UNITS_OF_MEASUREMENT[i]) return i;
+
+}
 
 int compareByID(Item& a, Item& b) {
     if(a.getID() < b.getID()){
@@ -19,9 +24,9 @@ int compareByID(Item& a, Item& b) {
 }
 
 int compareByUnits(Item& a, Item& b) {
-    if(a.getUnits() < b.getUnits()){
+    if(getUnitIndex(a.getUnits()) < getUnitIndex(b.getUnits())){
         return 1;
-    } else if(a.getUnits() == b.getUnits())
+    } else if(getUnitIndex(a.getUnits()) == getUnitIndex(b.getUnits()))
         return 0;
     else return -1;
 }
@@ -52,13 +57,54 @@ void returnToTheOriginalArray(Item* arr, int N){
 
 int main() {
 
+    std::cout << "Benchmark is running..." << std::endl;
+
     std::ofstream fout("benchmark_result", std::ios::out);
 
-    testSortings(500, fout);
     testSortings(5000, fout);
     testSortings(20000, fout);
 
     fout.close();
+
+    std::cout << "Benchmark finished running. See results in 'benchmark_result'\n" << std::endl;
+
+    std::cout << "--------------Stability proof-----------\n" << std::endl;
+
+    std::cout << "Initial array:" << std::endl;
+
+    int N = 10;
+    Item* items = new Item[N];
+
+    for(int i = 0; i < N; i++){
+        items[i] = getRandomItem();
+        std::cout << items[i]<< std::endl;
+    }
+    std::cout<<std::endl;
+
+
+    std::cout << "Array after sorting with quick sort for fields UNITS and EXPIRATION_PERIOD:" << std::endl;
+
+    int (*comparators[2])(Item&, Item&);
+    comparators[0] = compareByUnits;
+    comparators[1] = compareByExpirationPeriod;
+
+    quickSort(items, multipleFieldsComparator, comparators, N, 0, N - 1);
+
+    for(int i = 0; i < N; i++)
+        std::cout << items[i]<< std::endl;
+    std::cout<<std::endl;
+
+    std::cout << "Returning to array's initial state...\n" << std::endl;
+    returnToTheOriginalArray(items, N);
+
+    std::cout << "Array after sorting with radix sort for EXPIRATION_PERIOD and counting sort for UNITS:" << std::endl;
+    radixSort(items, N);
+    countingSort(items, N);
+
+    for(int i = 0; i < N; i++)
+        std::cout << items[i]<< std::endl;
+    std::cout<<std::endl;
+
 
     return 0;
 }
@@ -130,9 +176,22 @@ void testSortings(int N, std::ofstream& fout){
 
 
     delta = clock() - delta;
+    fout<< (double) delta / CLOCKS_PER_SEC << std::endl;
+
+    returnToTheOriginalArray(items,N);
+
+    delta = clock();
+    fout <<  "Sorting random array of " << N << " items by units and expirationPeriod with radix and counting sort took: ";
+
+    radixSort(items, N);
+    countingSort(items, N);
+
+    delta = clock() - delta;
     fout<< (double) delta / CLOCKS_PER_SEC << std::endl << std::endl;
 
     returnToTheOriginalArray(items,N);
+
+    ITEMS_COUNT_IN_DB = 0;
 
 }
 

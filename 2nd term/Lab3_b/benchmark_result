@@ -1,27 +1,20 @@
 
-Sorting random array of 500 items by units with quickSort took: 0.006038
-Sorting random array of 500 items by units with countingSort took: 0.000378
+Sorting random array of 5000 items by units with quickSort took: 1.0403
+Sorting random array of 5000 items by units with countingSort took: 0.00127
 
-Sorting random array of 500 items by expiration period with quickSort took: 0.000933
-Sorting random array of 500 items by expiration period with radixSort took: 0.000604
+Sorting random array of 5000 items by expiration period with quickSort took: 0.006023
+Sorting random array of 5000 items by expiration period with radixSort took: 0.002356
 
-Sorting random array of 500 items by units and expirationPeriod with quickSort took: 0.002583
-
-
-Sorting random array of 5000 items by units with quickSort took: 0.285492
-Sorting random array of 5000 items by units with countingSort took: 0.001776
-
-Sorting random array of 5000 items by expiration period with quickSort took: 0.004783
-Sorting random array of 5000 items by expiration period with radixSort took: 0.002512
-
-Sorting random array of 5000 items by units and expirationPeriod with quickSort took: 0.013331
+Sorting random array of 5000 items by units and expirationPeriod with quickSort took: 0.024432
+Sorting random array of 5000 items by units and expirationPeriod with radix and counting sort took: 0.003527
 
 
-Sorting random array of 20000 items by units with quickSort took: 3.39554
-Sorting random array of 20000 items by units with countingSort took: 0.005281
+Sorting random array of 20000 items by units with quickSort took: 10.4846
+Sorting random array of 20000 items by units with countingSort took: 0.004878
 
-Sorting random array of 20000 items by expiration period with quickSort took: 0.024617
-Sorting random array of 20000 items by expiration period with radixSort took: 0.013377
+Sorting random array of 20000 items by expiration period with quickSort took: 0.047794
+Sorting random array of 20000 items by expiration period with radixSort took: 0.0102
 
-Sorting random array of 20000 items by units and expirationPeriod with quickSort took: 0.069418
+Sorting random array of 20000 items by units and expirationPeriod with quickSort took: 0.13153
+Sorting random array of 20000 items by units and expirationPeriod with radix and counting sort took: 0.015885
 
