@@ -4,18 +4,17 @@ using namespace std;
 
 AdjMatrixGraph* AdjMatrixGraph::makeRandomMatrixGraph(int size){
 
-	bool** matrix = new bool* [size];
-	int* values = new int[size];
+	int** matrix = new int* [size];
 
 	for (int i = 0; i < size; i++) {
 		srand(i);
 	}
 
 	for (int i = 0; i < size; i++) {
-		matrix[i] = new bool[size];
+		matrix[i] = new int[size];
 		for (int j = 0; j < size; j++) {
 			srand(j * i + i);
-			matrix[i][j] = rand() % 2;
+			matrix[i][j] = rand() % 9+1;
 		}
 
 	}
@@ -24,8 +23,8 @@ AdjMatrixGraph* AdjMatrixGraph::makeRandomMatrixGraph(int size){
 }
 
 
-void AdjMatrixGraph::printGraph(){
-	int width = (int)log10((double)size) + 1;
+void AdjMatrixGraph::print(){
+	int width = (int)log10((double)size) + 1; //TODO: get "width" of weights, no indexes
 
 	cout << setw(width) << "    " << setw(width);
 	for (int v = 0; v < size; ++v) {
