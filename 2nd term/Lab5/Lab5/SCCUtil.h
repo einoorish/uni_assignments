@@ -2,20 +2,20 @@
 #include <stack> 
 using namespace std;
 
-//This class contains method that finds all connected components
 class SCCUtil {
 
 private:
-    void dfs(int u);
-
-public:
     int order = 0, pre = 0, count = 0;
     int* id,* low_links;
     bool* visited;
-    bool** adj;
+    int** adj;
     stack<int> stack;
 
-    SCCUtil(bool** adj, int order) {
+    void dfs(int u);
+
+public:
+
+    SCCUtil(int** adj, int order) {
         this->order = order;
         this->adj = adj;
         visited = new bool[order] {false};
@@ -27,8 +27,6 @@ public:
     }
 
     int* getConnectedComponents() {
-        for (int u = 0; u < order; u++) 
-            if (!visited[u]) dfs(u);
         return id;
     }
 
