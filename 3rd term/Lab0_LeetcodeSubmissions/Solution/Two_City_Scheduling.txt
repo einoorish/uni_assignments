@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+    
+        int result=0;
+        
+        std::sort(costs.begin(), costs.end(),
+          [] (const std::vector<int> &a, const std::vector<int> &b){
+              return abs(a[0]-a[1]) > abs(b[0]-b[1]);
+        });
+        
+//         vector<vector<int>> A = costs;
+        
+//         int counter = 0;
+//         for(int i = 0; i < costs.size()/2; i++){
+//                 result+=std::min(A[i][0],A[i][1]);
+//                 A.erase (A.begin()+i-counter);
+//                 counter++;
+//         }
+        
+//         std::sort(A.begin(),A.end(),
+//           [] (const std::vector<int> &b, const std::vector<int> &a){
+//               return  abs(a[0]-a[1]) > abs(b[0]-b[1]);
+//           });
+        
+//         vector<vector<int>> B = A;
+        
+//         for(int i = 0; i < costs.size()/2; i++){
+//             result+=B[i][1];
+//         }
+        
+          int a = costs.size()/2, b = costs.size()/2;
+          for(int i = 0; i < costs.size(); i++){
+             if(b == 0 || (costs[i][0] <= costs[i][1] && a!=0)){
+                result += costs[i][0]; 
+                 a--;
+             } else {
+                b--;
+                result += costs[i][1];
+             }
+          }
+
+        return result;
+    }
+};

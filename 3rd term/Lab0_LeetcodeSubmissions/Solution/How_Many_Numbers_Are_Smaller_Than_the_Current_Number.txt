@@ -1,0 +1,61 @@
+class Solution {
+
+    public static LinkedHashMap<Integer, Integer> sortByValue(LinkedHashMap<Integer, Integer> map) {
+        
+        //convert Map to List of its entries
+        List<Map.Entry<Integer, Integer>> list = 
+                new ArrayList<Map.Entry<Integer, Integer>>(map.entrySet());
+ 
+        Collections.sort(list, 
+                new Comparator<Map.Entry<Integer,Integer>>() {
+            @Override
+            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+ 
+        map.clear();
+ 
+        //put sorted values from list back to map
+        for(Map.Entry<Integer, Integer> sortedMap : list){
+         map.put(sortedMap.getKey(), sortedMap.getValue());
+        }
+        
+        return map; 
+    } 
+    
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap();
+        int result[] = new int[nums.length];
+    
+        for(int i=0; i < nums.length; i++)
+            map.put(i, nums[i]);
+
+        //sort map by values
+       LinkedHashMap<Integer, Integer>  sorted  = sortByValue(map);
+        
+        // equal values should have the same amount of smaller numbers
+        // @shift counts how many equal values are in a current sequence 
+        int shift = 0, current_index = 0;
+        Object prev_value = null;
+        
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            
+            Map.Entry entry = (Map.Entry)it.next();
+            int key = ((Integer)entry.getKey()).intValue();
+            
+            if(entry.getValue() == prev_value) shift++;
+            else shift = 0;
+            
+            prev_value = entry.getValue();
+         
+            result[key] = current_index - shift;
+            current_index  ++;
+        }
+        
+        return result;
+        
+    }
+}

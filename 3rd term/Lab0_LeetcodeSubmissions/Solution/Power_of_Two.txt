@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if(n<=0) return false;
+        if(n==1) return true;
+    
+        double f = n;
+        while(f>512) {
+            if(Math.ceil(f) != f) return false;
+            f = f/512;
+        }
+        
+        while(f>2){
+            f=f/2;
+        }
+        return f==2;
+    }
+}

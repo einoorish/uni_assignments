@@ -1,0 +1,41 @@
+class Solution {
+     int count;
+     private void countSquaresUtil(int[][] matrix){
+     
+       int[][] submatrix = submatrix = new int[matrix.length-1][matrix[0].length-1];  
+         
+         for(int i = 0; i < matrix.length-1; i++){
+           for(int j = 0; j < matrix[0].length-1; j++){
+               int temp = 0;
+               if(matrix[i][j] == 1) temp++;
+               if(matrix[i+1][j] == 1) temp++;
+               if(matrix[i][j+1] == 1) temp++;
+               if(matrix[i+1][j+1] == 1) temp++;
+              
+                if(temp == 4){                    
+                    submatrix[i][j]=1;
+                    count++;
+                } else submatrix[i][j]=0;
+            
+            } 
+        }
+         
+         if(submatrix.length != 1 && submatrix[0].length != 1)
+             countSquaresUtil(submatrix);
+        
+    }
+    
+    
+    public int countSquares(int[][] matrix) {
+        countSquaresUtil(matrix);
+        
+         for(int i = 0; i < matrix.length; i++){
+           for(int j = 0; j < matrix[0].length; j++){
+                count+=matrix[i][j];
+           }
+         }
+        
+        return count;
+    }
+}
+

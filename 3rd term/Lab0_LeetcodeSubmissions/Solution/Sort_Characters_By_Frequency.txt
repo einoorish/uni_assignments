@@ -1,0 +1,41 @@
+class Solution {    
+    
+    int max(int a, int b){
+        if(a>b) return a;
+        else return b;
+    }
+    
+    public static <T, E> Set<T> getKeysByValue(Map<T, E> map, E value) {
+        return map.entrySet()
+                  .stream()
+                  .filter(entry -> Objects.equals(entry.getValue(), value))
+                  .map(Map.Entry::getKey)
+                  .collect(Collectors.toSet());
+    }
+    
+    public String frequencySort(String s) {
+        int max_value = 1;
+        HashMap<Character,Integer> map = new HashMap<Character, Integer>(); 
+        
+        for(int i = 0; i < s.length(); i++){
+            Integer prev_count = map.get(s.charAt(i));
+            if(prev_count != null) {
+                map.replace(s.charAt(i), prev_count + 1);
+                max_value = max(prev_count+1, max_value);                
+            }
+            else map.put(s.charAt(i), 1);
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        
+       for (int i = max_value; i != 0 ; i--) {
+        for(char key : getKeysByValue(map, i)){
+            String str = Character.toString(key);
+            sb.append(
+                IntStream.range(0, i).mapToObj(j -> str).collect(Collectors.joining(""))
+            );
+        }
+       }
+        return sb.toString();
+    }
+}

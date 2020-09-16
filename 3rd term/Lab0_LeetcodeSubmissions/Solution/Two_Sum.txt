@@ -1,0 +1,56 @@
+import java.util.Arrays; 
+
+class Solution {
+
+    public static int getKey(Map<Integer, Integer> map, int value) {
+                
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			if (value == entry.getValue()) {
+				return entry.getKey();
+			}
+		}
+		return -1;
+	}
+    
+    
+    public int[] twoSum(int[] nums, int target) {
+        
+        int result[] = new int[2];
+        
+        //init map of pairs <index, number>
+        HashMap<Integer, Integer> map= new HashMap();
+        
+        for(int i = 0; i < nums.length; i++ ){
+            map.put(i, nums[i]);
+        }
+        
+    
+        //iterate through map
+        Iterator it = map.entrySet().iterator();  
+        
+        while (it.hasNext()) {             
+            Map.Entry pair = (Map.Entry)it.next();
+
+            //Hint 2:
+            if(map.containsValue(target - (int)pair.getValue())){
+                int second_index = getKey(map, target -  (int)pair.getValue());
+            
+                if(second_index!=(int)pair.getKey()){
+                    // bad(but still works) case: input is [x,x] and target is 2x
+                    // (0,1) will not satisfy the condition because 
+                    // getKey would return index 0 when searching for (target - value at index 0)
+                    // but at the second iteration, when met x at index 1 
+                    // getKey would still return 0 and this time it would satisfy the condition
+                    
+                    //somehow elimit extra iterations, maybe getKey should return an array?
+                    
+                    result[0] = (int)pair.getKey();
+                    result[1] = second_index;
+                    break;   
+                }
+            } 
+        }
+
+        return result;   
+    }
+}

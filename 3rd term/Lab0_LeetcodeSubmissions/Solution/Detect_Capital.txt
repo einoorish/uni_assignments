@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        bool case1holds = false, case2holds = false, case3holds = false;
+        
+        if(isupper(word[0])) case1holds = true;        
+        if(isupper(word[0]) && islower(word[word.length()-1])) case2holds = true;
+        else if(islower(word[0])) case3holds = true;
+        
+        
+        for (int i = 1; i < word.length(); i++) {
+            if(isupper(word[i])){
+               case3holds = false;
+               case2holds = false;
+            }else if(islower(word[i])) {
+               case1holds = false;
+            }
+        }
+        
+        return case1holds || case2holds || case3holds;
+    }
+};

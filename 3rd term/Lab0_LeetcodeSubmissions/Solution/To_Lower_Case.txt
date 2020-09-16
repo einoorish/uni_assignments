@@ -1,0 +1,12 @@
+class Solution {
+    public String toLowerCase(String str) {
+        char[] chars = new char[str.length()];
+        for(int i = 0 ; i < str.length(); i++){
+            if(str.charAt(i)>64 && str.charAt(i)<91) 
+                chars[i] = (char)(str.charAt(i) + 32);
+            else chars[i] = (char)str.charAt(i); 
+        }
+    
+        return String.valueOf(chars);
+    }
+}

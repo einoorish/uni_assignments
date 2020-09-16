@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        long long sum = 0;    
+        unordered_set <int> set;
+        
+        for(int i = 0; i < nums.size(); i++){
+            sum+=nums[i];
+            set.insert(nums[i]);
+        }
+        
+        unordered_set<int> :: iterator itr; 
+        for (itr = set.begin(); itr != set.end(); itr++) 
+            sum-= 3*(long)(*itr);
+        
+        return -sum/2;
+    }
+};
