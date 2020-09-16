@@ -1,5 +1,6 @@
 #pragma once
 #include "Date.h"
+#include <vector>
 
 template <typename T>
 class PriorityQueue {
@@ -20,11 +21,11 @@ private:
 		int priority;
 		Node* next = nullptr;
 	};
-	Node* head;
+	Node* front = nullptr, *rear = nullptr;
 
 public:
-	PriorityQueue_List() { head = nullptr; }
-	void push(T data, int priority) override;
+	PriorityQueue_List() = default;
+	void push(T data, int priority) override; 
 	void pop() override;
 	T top() override;
 	void print() override;
@@ -33,10 +34,27 @@ public:
 
 template <typename T>
 class PriorityQueue_Vector : public PriorityQueue<T> {
+private:
+	std::vector<std::pair<T, int>>  values;
+public:
+	PriorityQueue_Vector() = default;
+	void push(T data, int priority) override;
+	T top() override;
+	void pop() override;
+	void print() override;
 };
 
 template <typename T>
 class PriorityQueue_Tree : public PriorityQueue<T> {
+private:
+	class BinaryTree;
+	BinaryTree btree;
+
+public:
+	void push(T data, int priority) override;
+	T top() override;
+	void pop() override;
+	void print() override;
 };
 
 template <typename T>
@@ -49,3 +67,5 @@ class PriorityQueue_AVL : public PriorityQueue<T> {
 
 
 #include "PriorityQueue_List.h"
+#include "PriorityQueue_Vector.h"
+
