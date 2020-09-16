@@ -51,7 +51,7 @@ void PriorityQueue_List<T>::print() {
 	Node* current = front;
 	while (current != nullptr)
 	{
-		std::cout << "(" << current->value << "; " << current->priority << ")" << std::endl;
+		std::cout << "(" << current->value << "; " << current->priority << ") ";
 		current = current->next;
 	}
 }

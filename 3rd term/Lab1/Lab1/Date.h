@@ -35,5 +35,11 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, const Date& date);
 	friend std::istream& operator>>(std::istream& stream, Date& date);
-	bool operator<=(const Date& rhs) { return (day <= rhs.day) && (month <= rhs.month) && (year <= rhs.year); };
+	bool operator<(const Date& rhs) {
+		if (year < rhs.year) return true; else return false;
+		if (month < rhs.month) return true; else return false;
+		if (day < rhs.day) return true; else return false;
+		if (hour < rhs.hour) return true; else return false;
+		if (minute < rhs.minute) return true; else return false;
+	}
 };
