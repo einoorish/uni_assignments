@@ -1,6 +1,7 @@
 #pragma once
 #include "Date.h"
 #include <vector>
+#include <iostream>
 
 template <typename T>
 class PriorityQueue {
@@ -59,6 +60,19 @@ public:
 
 template <typename T>
 class PriorityQueue_Heap : public PriorityQueue<T> {
+private:
+	std::vector<std::pair<int,T>> heap;
+
+	int getParent(unsigned int index);
+	void maxHeapify(int index);
+	void heapifyUp(std::pair<T, int> pair);
+	bool isLhsBigger(int index1, int index2);
+
+public:
+	void push(T data, int priority) override;
+	T top() override;
+	void pop() override;
+	void print() override;
 };
 
 template <typename T>
@@ -68,4 +82,5 @@ class PriorityQueue_AVL : public PriorityQueue<T> {
 
 #include "PriorityQueue_List.h"
 #include "PriorityQueue_Vector.h"
-
+#include "PriorityQueue_Tree.h"
+#include "PriorityQueue_Heap.h"

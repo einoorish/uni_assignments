@@ -3,8 +3,8 @@
 
 template<typename T>
 void PriorityQueue_Vector<T>::push(T data, int priority) {
-    for (unsigned int i = 0; i < values.size() ; i++) {
-        if (priority < values[i].second || (priority == values[i].second  && data < values[i].first)) {
+    for (unsigned int i = 0; i < values.size(); i++) {
+        if (priority > values[i].second || (priority == values[i].second && data < values[i].first)) {
             values.insert(values.begin() + i, std::pair<T, int>(data, priority));
             return;
         }
@@ -24,7 +24,7 @@ void PriorityQueue_Vector<T>::pop() {
 
 template<typename T>
 void PriorityQueue_Vector<T>::print() {
-    for (unsigned int i = 0; i < values.size(); i++){
-        std::cout << "(" << values[i].first << "," << values[i].second << ")" << " ";
+    for (unsigned int i = 0; i < values.size(); i++) {
+        std::cout << "(" << values[i].first << "," << values[i].second << ") ";
     }
 }

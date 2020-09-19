@@ -42,12 +42,29 @@ private:
         std::cout << "\nQueue top: " << queue->top() << std::endl;
     }
 
+    void _HeapDemo() {
+        PriorityQueue<int>* queue = new PriorityQueue_Heap<int>();
+        std::cout << "Pushing pairs(value, priority): (10,1), (8, 1), (12, 1), (2, 2), (3,0), (3,0)" << std::endl;
+        queue->push(10, 1);
+        queue->push(8, 1);
+        queue->push(12, 1);
+        queue->push(2, 2);
+        queue->push(3, 0);
+        queue->push(3, 0);
+        std::cout << "Queue : "; queue->print();
+
+        std::cout << "\nQueue top: " << queue->top() << std::endl;
+        std::cout << "Queue pop "; queue->pop();
+        std::cout << "\nQueue top: " << queue->top() << std::endl;
+    }
+
+
 public:
 
     void startDemoMode() {
         int queueType;
 
-        std::cout << "Choose queue type: 1 - List, 2 - Vector" << std::endl;
+        std::cout << "Choose queue type: 1 - List, 2 - Vector, 3 - Heap" << std::endl;
         std::cin >> queueType;
 
         //TODO: check if input is valid; 
@@ -59,6 +76,10 @@ public:
         }
         case 2: {
             _VectorDemo();
+            break;
+        }
+        case 3: {
+            _HeapDemo();
             break;
         }
         }
