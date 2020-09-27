@@ -29,7 +29,7 @@ bool Date::isValidDate(){
     return true;
 }
 
-//Zeller’s algorythm
+//Zeller’s algorithm
  std::string Date::getWeekday() {
      if (month == 1) {
          month = 13;

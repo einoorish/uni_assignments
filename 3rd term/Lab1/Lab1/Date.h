@@ -1,7 +1,5 @@
 #pragma once
 #include "string"
-#include <fstream>
-#include <istream>
 #include <iomanip>
 
 const int MAX_DAYS_IN_MONTH[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };

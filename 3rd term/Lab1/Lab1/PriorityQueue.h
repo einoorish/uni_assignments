@@ -48,9 +48,17 @@ public:
 template <typename T>
 class PriorityQueue_Tree : public PriorityQueue<T> {
 private:
-	class BinaryTree;
-	BinaryTree btree;
+	struct Node {
+		std::pair<T, int> data;
+		Node* right, * left;
+	};
 
+	Node* root = nullptr;
+
+	void pushToRoot(Node*& root,std::pair<T, int>pair);
+	void removeMax();
+	T getMax();
+	void print(Node* node);
 public:
 	void push(T data, int priority) override;
 	T top() override;

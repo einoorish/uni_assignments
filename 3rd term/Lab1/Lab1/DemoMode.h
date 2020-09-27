@@ -25,6 +25,21 @@ private:
         std::cout << "\nQueue top: " << queue->top() << std::endl;
     }
 
+    void _TreeDemo() {
+        PriorityQueue<std::string>* queue = new PriorityQueue_Tree<std::string>();
+        std::cout << "Pushing pairs(value, priority):  ('aa', 1), ('bb', 1), ('ab', 1), ('cc', 2), ('dd', 0), ('aa', 0) " << std::endl;
+        queue->push("aa", 1);
+        queue->push("bb", 1);
+        queue->push("ab", 1);
+        queue->push("cc", 2);
+        queue->push("dd", 0);
+        queue->push("aa", 0);
+        std::cout << "Queue : "; queue->print();
+
+        std::cout << "\nQueue top: " << queue->top() << std::endl;
+        std::cout << "Queue pop "; queue->pop();
+        std::cout << "\nQueue top: " << queue->top() << std::endl;
+    }
 
     void _VectorDemo() {
         PriorityQueue<Date>* queue = new PriorityQueue_Vector<Date>();
@@ -59,12 +74,12 @@ private:
     }
 
 
-public:
+public: 
 
     void startDemoMode() {
         int queueType;
 
-        std::cout << "Choose queue type: 1 - List, 2 - Vector, 3 - Heap" << std::endl;
+        std::cout << "Choose queue type: 1 - List, 2 - Vector, 3 - Tree, 4 - Heap" << std::endl;
         std::cin >> queueType;
 
         //TODO: check if input is valid; 
@@ -79,6 +94,10 @@ public:
             break;
         }
         case 3: {
+            _TreeDemo();
+            break;
+        }
+        case 4: {
             _HeapDemo();
             break;
         }
