@@ -9,8 +9,9 @@
 #include <QMessageBox>
 #include <QPrinter>
 #include <QPrintDialog>
-#include <QMovie>
+#include <QVector>
 
+#include "note.h"
 #include "notewindow.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,10 +26,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+
+    void on_add_note_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    QVector<Note> notes;
 
-    QMovie *catsGif;
+    NoteWindow noteWindow;
 };
 #endif // MAINWINDOW_H

@@ -73,6 +73,27 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QRadioButton" name="work">
+     <property name="text">
+      <string>Work</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="studying">
+     <property name="text">
+      <string>Studying</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QRadioButton" name="personal">
+     <property name="text">
+      <string>Personal</string>
+     </property>
+    </widget>
+   </item>
   </layout>
   <action name="actionOpen">
    <property name="icon">

@@ -54,7 +54,7 @@
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="main">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -67,7 +67,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="archive">
           <property name="text">
            <string>Archive</string>
           </property>
@@ -86,7 +86,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="add_note">
         <property name="text">
          <string>Add note</string>
         </property>
@@ -95,12 +95,12 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,0,2">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="3,2,2,2,0">
       <property name="spacing">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="sizeConstraint">
-       <enum>QLayout::SetMinimumSize</enum>
+       <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <property name="leftMargin">
        <number>5</number>
@@ -112,7 +112,7 @@
        <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>15</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QLabel" name="categories">
@@ -149,23 +149,36 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="catsGif">
- 	<property name="geometry">
-     	 <rect>
-      	  <x>30</x>
-      	  <y>0</y>
-      	  <width>501</width>
-      	  <height>251</height>
-     	 </rect>
-    	</property>
+       <widget class="QLabel" name="catPic">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="text">
-         <string/>
+         <string notr="true"/>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
         </property>
         <property name="pixmap">
-         <pixmap resource="images.qrc">:/icons/icons/cats.gif</pixmap>
+         <pixmap resource="images.qrc">:/icons/icons/cat.png</pixmap>
         </property>
         <property name="scaledContents">
-         <bool>false</bool>
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <property name="indent">
+         <number>-1</number>
         </property>
        </widget>
       </item>

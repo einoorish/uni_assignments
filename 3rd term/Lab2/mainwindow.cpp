@@ -6,14 +6,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-//    catsGif = new QMovie("icons/cats.gif");
-//    ui->catsGif->setMovie(catsGif);
-//    catsGif->start();
-
-
 }
 
 MainWindow::~MainWindow(){
     delete ui;
+}
+
+void MainWindow::on_add_note_clicked()
+{
+    noteWindow.show();
 }

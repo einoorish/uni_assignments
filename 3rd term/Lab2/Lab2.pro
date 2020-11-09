@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    note.cpp \
     notewindow.cpp
 
 HEADERS += \
     mainwindow.h \
+    note.h \
     notewindow.h
 
 FORMS += \
