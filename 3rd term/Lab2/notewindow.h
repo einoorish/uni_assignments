@@ -9,6 +9,10 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QInputDialog>
+#include <QDateTime>
+#include <QCloseEvent>
+
+#include "note.h"
 
 namespace Ui { class NoteWindow; }
 
@@ -18,10 +22,8 @@ class NoteWindow: public QDialog
 public:
     NoteWindow(QWidget *parent = nullptr);
     ~NoteWindow();
-private slots:
-    void on_actionNew_triggered();
 
-    void on_actionOpen_triggered();
+private slots:
 
     void on_actionSave_triggered();
 
@@ -35,8 +37,8 @@ private slots:
 
     void on_actionRedo_triggered();
 
+
 private:
     Ui::NoteWindow *ui;
-    QString currentFile = "";
 };
 #endif // NOTEWINDOW_H

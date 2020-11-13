@@ -6,53 +6,53 @@ NoteWindow::NoteWindow(QWidget *parent)
     , ui(new Ui::NoteWindow)
 {
     ui->setupUi(this);
-    //TODO: set window title to note title
+
+    if(Note::currentNote!=nullptr){
+        setWindowTitle(Note::currentNote->title);
+        ui->textEdit->setText(Note::currentNote->text);
+        if(Note::currentNote->category == "Work"){
+            ui->work->setChecked(true);
+        }else if(Note::currentNote->category == "Personal"){
+            ui->personal->setChecked(true);
+        }else if(Note::currentNote->category == "Studying"){
+            ui->studying->setChecked(true);
+        }
+    } else {
+        ui->textEdit->setText("");
+        ui->work->setChecked(false);
+        ui->personal->setChecked(false);
+        ui->studying->setChecked(false);
+    }
 }
 
 NoteWindow::~NoteWindow(){
-    currentFile = "";
     delete ui;
 }
 
-void NoteWindow::on_actionOpen_triggered(){
-    QString fileName = QFileDialog::getOpenFileName(this, "Open file");
-    QFile file(fileName);
-
-    currentFile = fileName;
-
-    if (!file.open(QIODevice::ReadOnly | QFile::Text)) {
-        QMessageBox::warning(this, "Warning", "Cannot open file: " + file.errorString());
-        return;
-    }
-
-    setWindowTitle(fileName);
-
-    QTextStream in(&file); // to read from file
-    QString text = in.readAll();
-
-    ui->textEdit->setText(text);
-
-    file.close();
-}
-
 void NoteWindow::on_actionSave_triggered(){
-    if(currentFile.isEmpty()){
-        currentFile = QDir::currentPath();
-        currentFile += "/";
-        currentFile += QInputDialog::getText(this, "Saving...","Enter file name");
-        currentFile += ".txt";
+    QString category;
+    QString text = ui->textEdit->toPlainText();
+    QDateTime time = QDateTime::currentDateTime();
+
+    //TODO: use an enum or something...
+    if(ui->personal->isChecked()){
+        category = "Personal";
+    } else if(ui->work->isChecked()){
+        category = "Work";
+    } else if(ui->studying->isChecked()){
+        category = "Studying";
     }
 
-    QFile file(currentFile);
-    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::warning(this, "Warning", "Cannot save file: " + file.errorString());
-        return;
+
+    if(Note::currentNote==nullptr){
+        QString title = QInputDialog::getText(this, "Saving...","Enter file name");
+        Note::currentNote = new Note(title, text, category, time);
+        setWindowTitle(Note::currentNote->title);
+    } else {
+        Note::currentNote->editTime = time;
+        Note::currentNote->category = category;
+        Note::currentNote->text = text;
     }
-    QTextStream out(&file);
-    QString text = ui->textEdit->toPlainText();
-    out << text;
-    file.flush();
-    file.close();
 }
 
 
@@ -80,4 +80,5 @@ void NoteWindow::on_actionRedo_triggered()
 {
     ui->textEdit->redo();
 }
+
 
