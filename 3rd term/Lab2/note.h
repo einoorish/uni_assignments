@@ -5,13 +5,12 @@
 
 class Note
 {
-private:
+public:
     QString title = "";
     QString text = "";
     QString category = "";
     QDateTime editTime;
 
-public:
     friend class MainWindow;
     friend class NoteWindow;
     Note();
