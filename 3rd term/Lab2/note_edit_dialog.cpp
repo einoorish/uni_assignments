@@ -68,7 +68,6 @@ void NoteEditDialog::on_actionRedo_triggered()
 
 void NoteEditDialog::showEvent(QShowEvent *event)
 {
-    qDebug() << "SHOW";
     if(Note::currentNote!=nullptr){
 
         setWindowTitle(Note::currentNote->title);

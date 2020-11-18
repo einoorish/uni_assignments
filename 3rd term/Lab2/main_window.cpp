@@ -29,7 +29,6 @@ MainWindow::~MainWindow(){
 void MainWindow::on_add_note_clicked()
 {
     Note::currentNote = nullptr;
-    qDebug()<<(Note::currentNote?Note::currentNote->title:"EMPTYNOTE!!!");
     noteWindow.exec();
 
     if(Note::currentNote != nullptr){
@@ -54,13 +53,33 @@ void MainWindow::on_listView_clicked(const QModelIndex &index)
 
 void MainWindow::on_open_btn_clicked()
 {
-    qDebug() << "SELECTED" << ui->listView->currentIndex().row();
+    Note oldNote = *Note::currentNote;
+
     noteWindow.exec();
 
-    notes.insert(ui->listView->currentIndex().row(), Note::currentNote);
-        // main_model->setData(ui->listView->currentIndex(), new QStandardItem(Note::currentNote->title));
+    if(oldNote.editTime != Note::currentNote->editTime){
+        //"Save" was triggered
+
+        //remove old text
+        int index = ui->listView->currentIndex().row();
+        QString old_text_file_path = TEXT_PATH+Note::dateToFileName(notes[index]->editTime);
+        QFile old_text_file(old_text_file_path);
+        old_text_file.remove();
+
+        notes.erase(notes.begin()+index);
+        notes.insert(notes.begin()+index, Note::currentNote);
+    }
+
+}
 
 
+void MainWindow::on_delete_btn_clicked()
+{
+    int index = ui->listView->currentIndex().row();
+    QFile file(TEXT_PATH+Note::dateToFileName(notes[index]->editTime));
+    file.remove();
+    notes.erase(notes.begin()+index);
+    main_model->removeRow(index);
 }
 
 
@@ -89,6 +108,7 @@ void MainWindow::readNotesFromFile(QString fileName, QStandardItemModel *model)
 
         //read category
         QString category = dataNotes.readLine();
+        category.remove(category.size()-1,1);
 
         //read text
         QString fileName = Note::dateToFileName(createTime);
@@ -133,6 +153,7 @@ void MainWindow::writeNotesDataToFile(QString fileName, QVector<Note*>& list)
 {
     QFile dataNotes(fileName);
     dataNotes.open(QIODevice::WriteOnly);
+
     QTextStream out(&dataNotes);
     for (int i = 0; i < list.size(); i++)
     {
