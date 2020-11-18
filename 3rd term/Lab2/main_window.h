@@ -30,13 +30,13 @@ public:
 
     void addNoteToList(Note* note, QStandardItemModel *model);
 
-    void readNotesFromFile(QString fileName, QStandardItemModel *model);
+    void readNotesFromFile(QString dataFileName, QString textFolderName, QStandardItemModel *model);
     void readNotesWithCategory(QString category, QStandardItemModel *model);
 
     void writeNotesDataToFile(QString fileName, QVector<Note*>& list);
-    void writeNotesTextToFiles();
+    void writeNotesTextToFiles(QString folderName, QVector<Note*>& list);
 
-    int getNotePositionInFile(int left, int right, Note& note);
+    int getNotePositionInFile(int left, int right, Note& note, QVector<Note*>& list);
 
 private slots:
 
@@ -48,11 +48,19 @@ private slots:
 
     void on_delete_btn_clicked();
 
+    void on_main_list_btn_clicked();
+
+    void on_archive_list_btn_clicked();
+
+    void on_archive_btn_clicked();
+
 private:
     Ui::MainWindow *ui;
 
-    QVector<Note*> notes;
+    QVector<Note*> main_notes;
+    QVector<Note*> archived_notes;
     QStandardItemModel *main_model;
+    QStandardItemModel *archive_model;
 
     NoteEditDialog noteWindow;
 };
