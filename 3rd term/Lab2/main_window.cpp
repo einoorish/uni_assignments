@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->listView->setModel(main_model);
+
     readNotesFromFile(MAIN_DATA_PATH, MAIN_TEXT_PATH, main_model);
     readNotesFromFile(ARCHIVE_DATA_PATH, ARCHIVE_TEXT_PATH, archive_model);
 }
@@ -41,7 +42,7 @@ void MainWindow::on_add_note_clicked()
     if(Note::currentNote != nullptr){
         //if "Save" was clicked add note to list
          main_notes.push_back(Note::currentNote);
-         main_model->insertRow(main_notes.size()-1, new QStandardItem(Note::currentNote->title));
+         main_model->appendRow(new QStandardItem(Note::currentNote->title));
          Note::currentNote = nullptr;
     }
 
@@ -129,11 +130,19 @@ void MainWindow::on_delete_btn_clicked()
 void MainWindow::on_main_list_btn_clicked()
 {
     ui->listView->setModel(main_model);
+
+    ui->personal_checkBox->setChecked(true);
+    ui->work_checkBox->setChecked(true);
+    ui->studying_checkBox->setChecked(true);
 }
 
 void MainWindow::on_archive_list_btn_clicked()
 {
     ui->listView->setModel(archive_model);
+
+    ui->personal_checkBox->setChecked(true);
+    ui->work_checkBox->setChecked(true);
+    ui->studying_checkBox->setChecked(true);
 }
 
 //----------------------------------------------------------------------FILES------------------------------------------------------------------------
@@ -248,4 +257,91 @@ void MainWindow::writeNotesTextToFiles(QString folderName, QVector<Note*>& list)
     }
 }
 
+//----------------------------------------------------------------------CATEGORIES------------------------------------------------------------------------
 
+void MainWindow::on_personal_checkBox_stateChanged(int arg1)
+{
+    QVector<Note*> list;
+    if(ui->listView->model() == main_model){
+        list = main_notes;
+    } else list = archived_notes;
+
+    removeAllNotesWithUncheckedCategories(list);
+
+}
+
+
+void MainWindow::on_work_checkBox_stateChanged(int arg1)
+{
+    QVector<Note*> list;
+    if(ui->listView->model() == main_model){
+        list = main_notes;
+    } else list = archived_notes;
+
+    removeAllNotesWithUncheckedCategories(list);
+}
+
+void MainWindow::on_studying_checkBox_stateChanged(int arg1)
+{
+    QVector<Note*> list;
+    if(ui->listView->model() == main_model){
+        list = main_notes;
+    } else list = archived_notes;
+
+    removeAllNotesWithUncheckedCategories(list);
+
+}
+
+
+void MainWindow::removeAllNotesWithUncheckedCategories(QVector<Note*> list){
+
+    bool isWorkChecked = ui->work_checkBox->isChecked();
+    bool isPersonalChecked = ui->personal_checkBox->isChecked();
+    bool isStudyingChecked = ui->studying_checkBox->isChecked();
+
+    //clear listView
+    ui->listView->model()->removeRows(0, ui->listView->model()->rowCount());
+
+    int removed = 0;
+
+    for(int i = 0; i < list.size(); i++){
+
+        if(list.at(i)->category == "Personal"){
+          if(isPersonalChecked){
+              //insert back to the listView
+              if(ui->listView->model() == main_model){
+                  main_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+                } else {
+                  archive_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+               }
+          } else {
+              //leave it removed...
+              removed++;
+          }
+        }
+
+       else if(list.at(i)->category == "Work"){
+           if(isWorkChecked){
+               if(ui->listView->model() == main_model){
+                   main_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+                 } else {
+                   archive_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+                }
+           } else {
+               removed++;
+           }
+       }
+
+       else if(list.at(i)->category == "Studying"){
+           if(isStudyingChecked){
+               if(ui->listView->model() == main_model){
+                   main_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+                 } else {
+                   archive_model->insertRow(i-removed, new QStandardItem(list.at(i)->title));
+                }
+           } else {
+               removed++;
+           }
+       }
+    }
+}

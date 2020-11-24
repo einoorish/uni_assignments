@@ -45,15 +45,16 @@ private slots:
     void on_listView_clicked(const QModelIndex &index);
 
     void on_open_btn_clicked();
-
     void on_delete_btn_clicked();
 
     void on_main_list_btn_clicked();
-
     void on_archive_list_btn_clicked();
 
     void on_archive_btn_clicked();
 
+    void on_personal_checkBox_stateChanged(int arg1);
+    void on_work_checkBox_stateChanged(int arg1);
+    void on_studying_checkBox_stateChanged(int arg1);
 private:
     Ui::MainWindow *ui;
 
@@ -63,5 +64,7 @@ private:
     QStandardItemModel *archive_model;
 
     NoteEditDialog noteWindow;
+
+    void removeAllNotesWithUncheckedCategories(QVector<Note*> list);
 };
 #endif // MAINWINDOW_H
