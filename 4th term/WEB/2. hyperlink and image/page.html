@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image page</title>
+    <script type="text/javascript">
+	var zoomed=false
+        function increaseSize(img){
+            if(!zoomed){
+                img.width = 900;
+                img.height = 1200;
+		zoomed = true
+            } else {
+                img.width = 90;
+                img.height = 120;
+		zoomed = false
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="image.jpg" width="90" height="120" onclick="increaseSize(this)">
+</body>
+</html>
