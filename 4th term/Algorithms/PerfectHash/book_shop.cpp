@@ -103,32 +103,26 @@ void HashTable::search(std::string key, int m){
     int hash2 = universalHash(key, hashTable[hash].a, hashTable[hash].b, hashTable[hash].size);
     
     
-    std::vector<Book> books = hashTable[hash].authors[hash2].getBooks();
-    for (auto book : books)
-        std::cout << book.getYear() << " - " << book.getName() << std::endl;
+    Book* book = hashTable[hash].authors[hash2].getBook();
+    std::cout << book->getYear() << " - " << book->getName() << std::endl;
 }
 
-std::vector<Author> Author::generateAuthors(size_t m) {
+std::vector<Author> Author::getAuthors() {
     srand((unsigned)time(0));
     std::vector<Author> authors;
-    for (int i = 0; i < m; i++) {
-        authors.push_back(Author(random_string(3), Book::generateBooks(rand() % 12)));
+    for (int i = 0; i < sizeof(author_names) / sizeof(author_names[0]); i++) {
+        authors.push_back(Author(author_names[i], Book::getBook(i)));
     }
     return authors;
 }
 
-std::vector<Book> Book::generateBooks(size_t m) {
-    std::vector<Book> books;
-    for (int i = 0; i < m; i++) {
-        books.push_back(Book(random_string(12), (rand() % 2020)));
-    }
-    return books;
+Book* Book::getBook(int index) {
+    Book* book = new Book(book_names[index], (rand() % 2020));
+    return book;
 }
 
-std::string random_string(size_t length)
-{
-    auto randchar = []() -> char
-    {
+std::string random_string(size_t length){
+    auto randchar = []() -> char {
         const char charset[] =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             "abcdefghijklmnopqrstuvwxyz";

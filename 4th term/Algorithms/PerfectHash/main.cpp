@@ -5,11 +5,9 @@
 
 int main()
 {
-    int m = 3;
-    std::cout << "How many authors? ";
-    std::cin >> m;
+    int m = sizeof(author_names) / sizeof(author_names[0]);
 
-    std::vector<Author> authors = Author::generateAuthors(m);
+    std::vector<Author> authors = Author::getAuthors();
     std::cout << "\nSuccessfully generated " << m << " authors:\n";
     for (int i = 0; i < m; i++) {
         std::cout << authors[i].getName() << " ";

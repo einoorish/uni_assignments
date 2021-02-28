@@ -6,6 +6,27 @@
 
 std::string random_string(size_t length);
 
+static const std::string author_names[] = {
+    "RobertSingh", 
+    "AkkithamNamboodri", 
+    "MargaretAtwood", 
+    "JokhaAlharthi", 
+    "RichardPower", 
+    "NarendraModi", 
+    "SusanNinan"
+};
+
+static const std::string book_names[] = {
+    "Politics of Opportunism",
+    "Malayalam poetry",
+    "The Testaments",
+    "Celestial Bodies",
+    "The Overstory",
+    "The Braille edition of the book Exam Warriors",
+    "Mind - Master"
+};
+ 
+
 class Book {
     std::string name;
     size_t year;
@@ -17,23 +38,23 @@ public:
     std::string getName() { return name; }
     size_t getYear() { return year; }
 
-    static std::vector<Book> generateBooks(size_t m);
+    static Book* getBook(int index);
 };
 
 
 class Author {
     std::string name = " None ";
-    std::vector<Book> books;
+    Book* book = nullptr;
 
 public:
     Author() = default;
     Author(std::string name) : name(name) {}
-    Author(std::string name, std::vector<Book> books) : name(name), books(books) {}
+    Author(std::string name, Book* book) : name(name), book(book) {}
 
     std::string getName() { return name; }
-    std::vector<Book> getBooks() { return books; }
+    Book* getBook() { return book; }
 
-    static std::vector<Author> generateAuthors(size_t m);
+    static std::vector<Author> getAuthors();
 };
 
 
@@ -51,7 +72,7 @@ private:
         unsigned int b = 22;
         unsigned int size = 0;
 
-        Author* authors;
+        Author* authors = new Author[sizeof(author_names) / sizeof(author_names[0])];
     };
 
     int universalHash(const std::string& key, int a, int b, int m);
