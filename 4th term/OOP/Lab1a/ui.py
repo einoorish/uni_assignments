@@ -23,9 +23,9 @@ class UI:
     def data_for_today(self):
         today = date.today()
         print(f" Meetings planned for today:")
-        Meeting.view(self.selected_date)
+        print(Meeting.view(self.selected_date))
         print(f" To-Do: ")
-        Task.view(self.selected_date)
+        print(Task.view(self.selected_date))
 
         print("\n--------------\n")
 

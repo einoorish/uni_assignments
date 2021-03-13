@@ -1,6 +1,7 @@
 import collections
 import json
 import datetime
+import unittest
 from collections import defaultdict
 from json import JSONDecodeError
 
@@ -24,9 +25,9 @@ class Task:
                 state = UNCHECKED
                 if task["is_done"]:
                     state = CHECKED
-                print(f"\t{state} {task['text']}")
+                return f"\t{state} {task['text']}"
         except KeyError:
-            print("None")
+            return "None"
 
 
 class Meeting:
@@ -40,9 +41,9 @@ class Meeting:
         try:
             meetings = records.data[date]["meetings"]
             for meeting in meetings:
-                print(f"\t{meeting['time']} - {meeting['text']}")
+                return f"\t{meeting['time']} - {meeting['text']}"
         except KeyError:
-            print("None")
+            return "None"
 
 
 class RecordsManager:
@@ -117,9 +118,9 @@ class RecordsManager:
 
     def search_record(self, date):
         print(f" Meetings planned for this date:")
-        Meeting.view(date)
+        print(Meeting.view(date))
         print(f" To-Do: ")
-        Task.view(date)
+        print(Task.view(date))
 
     def save_changes(self):
         with open(DATA_FILE, "w+") as file:
@@ -128,3 +129,27 @@ class RecordsManager:
     def __del__(self):
         with open(DATA_FILE, 'w') as file:
             json.dump(self.data, file, indent=4)
+
+
+class MyTest(unittest.TestCase):
+    def test_mark_as_done(self):
+        task = Task("test")
+        date = "0-0-0"
+        records_manager = RecordsManager()
+        records_manager.add_record(task, date)
+        records_manager.mark_task_as_done(0, date)
+        self.assertEqual(task.is_done, True, "Previously undone task marked as done")
+        records_manager.mark_task_as_done(0, date)
+        self.assertEqual(task.is_done, True, "Previously done task still marked as done")
+        records_manager.delete_record("task", 0, date)
+
+    def test_add_search(self):
+        task = Task("test")
+        date = "0-0-0"
+        records_manager = RecordsManager()
+        self.assertEqual(records_manager.search_record(date), None, "No records for the date yet")
+        records_manager.add_record(task, date)
+        self.assertFalse(records_manager.search_record(date), None)
+        records_manager.delete_record("task", 0, date)
+
+
