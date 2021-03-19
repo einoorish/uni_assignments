@@ -1,33 +1,38 @@
 from ui import UI
-from datetime import date
-from records_manager import RecordsManager, MyTest
-from records_manager import Task
-from records_manager import Meeting
+from records_manager import MyTest
 
 USERDATA_FILENAME = "userdata.txt"
 username = ""
 
-try:
-    file = open(USERDATA_FILENAME)
-    username = file.read()
-except IOError:
-    file = open(USERDATA_FILENAME, "w+")
-    username = input("Your name: ")
-    file.write(username)
-finally:
-    file.close()
 
-tests = MyTest()
-tests.test_mark_as_done()
-tests.test_add_search()
+def run_app():
+    ui = UI(username)
 
-print("\n\n-------------All tests passed!-----------\n\n")
-
-UI = UI(username)
+    ui.data_for_today()
+    ui.available_commands()
 
 
-UI.data_for_today()
-UI.available_commands()
+def run_tests():
+    tests = MyTest()
+    tests.test_mark_as_done()
+    tests.test_add_search()
+
+    print("\n\n-------------All tests passed!-----------\n\n")
 
 
+def prepare_app():
+    try:
+        file = open(USERDATA_FILENAME)
+        username = file.read()
+    except IOError:
+        file = open(USERDATA_FILENAME, "w+")
+        username = input("Your name: ")
+        file.write(username)
+    finally:
+        file.close()
 
+    run_tests()
+
+
+prepare_app()
+run_app()

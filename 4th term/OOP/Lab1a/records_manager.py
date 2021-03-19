@@ -1,8 +1,5 @@
-import collections
 import json
-import datetime
 import unittest
-from collections import defaultdict
 from json import JSONDecodeError
 
 CHECKED = u"\u2705"
@@ -27,7 +24,7 @@ class Task:
                     state = CHECKED
                 return f"\t{state} {task['text']}"
         except KeyError:
-            return "None"
+            return None
 
 
 class Meeting:
@@ -43,7 +40,14 @@ class Meeting:
             for meeting in meetings:
                 return f"\t{meeting['time']} - {meeting['text']}"
         except KeyError:
-            return "None"
+            return None
+
+
+def _get_record_type(record):
+    if type(record) is Task:
+        return "tasks"
+    else:
+        return "meetings"
 
 
 class RecordsManager:
@@ -56,37 +60,18 @@ class RecordsManager:
                 except JSONDecodeError:
                     self.data = {}
         except IOError:
-            with open(DATA_FILE, "w+") as file:
+            with open(DATA_FILE, "w+"):
                 pass
 
-    def _get_record_type(self, record):
-        if type(record) is Task:
-            return "tasks"
-        else:
-            return "meetings"
-
-    def view_records(self, date):
-        try:
-            data = self.data[date]
-            try:
-                tasks = data["tasks"]
-            except KeyError:
-                tasks = None
-            try:
-                meetings = data["meetings"]
-            except KeyError:
-                meetings = None
-
-            print(f"Meetings for {date} are:\n\t{meetings}\nTasks for {date} are: \n\t{tasks}")
-        except KeyError:
-            print("No records for this date")
-            return None
-
     def mark_task_as_done(self, index, selected_date):
-        self.data[selected_date]["tasks"][index]["is_done"] = True
+        try:
+            self.data[selected_date]["tasks"][index]["is_done"] = True
+        except IndexError:
+            print("Wrong input")
 
     def add_record(self, record, date):
-        record_type = self._get_record_type(record)
+        """Adds a %record% for %date% to file and data list"""
+        record_type = _get_record_type(record)
 
         try:
             updated_value = self.data[date]
@@ -109,6 +94,8 @@ class RecordsManager:
         self.save_changes()
 
     def delete_record(self, record_type, index, date):
+        """Removes record of %record_type% at %index% for %date% from file and data list"""
+
         record_type += "s"
         try:
             del self.data[date][record_type][index]
@@ -116,11 +103,19 @@ class RecordsManager:
         except KeyError:
             print("Wrong input")
 
-    def search_record(self, date):
+    def view_records(self, date):
+        """Prints records row for %date%"""
+
+        data = self.search_records(date)
         print(f" Meetings planned for this date:")
-        print(Meeting.view(date))
+        print(data["meetings"])
         print(f" To-Do: ")
-        print(Task.view(date))
+        print(data["tasks"])
+
+    def search_records(self, date):
+        """Returns records row for %date% as dictionary, format: {"meetings": *, "tasks: *"}"""
+
+        return {"meetings": Meeting.view(date), "tasks": Task.view(date)}
 
     def save_changes(self):
         with open(DATA_FILE, "w+") as file:
@@ -132,24 +127,33 @@ class RecordsManager:
 
 
 class MyTest(unittest.TestCase):
+
+    def setUp(self):
+        self.task = Task("test")
+        self.meeting = Meeting("meeting", "00:00")
+        self.date = "0-0-0"
+        self.records_manager = RecordsManager()
+
+    def tearDown(self):
+        self.records_manager.delete_record("task", 0, self.date)
+
     def test_mark_as_done(self):
-        task = Task("test")
-        date = "0-0-0"
-        records_manager = RecordsManager()
-        records_manager.add_record(task, date)
-        records_manager.mark_task_as_done(0, date)
-        self.assertEqual(task.is_done, True, "Previously undone task marked as done")
-        records_manager.mark_task_as_done(0, date)
-        self.assertEqual(task.is_done, True, "Previously done task still marked as done")
-        records_manager.delete_record("task", 0, date)
+        self.setUp()
+        self.records_manager.add_record(self.task, self.date)
+
+        self.assertEqual(self.task.is_done, False, "Previously undone task is not marked as done")
+        self.records_manager.mark_task_as_done(0, self.date)
+        self.assertEqual(self.task.is_done, True, "Previously undone task marked as done")
+        self.records_manager.mark_task_as_done(0, self.date)
+        self.assertEqual(self.task.is_done, True, "Previously done task still marked as done")
+
+        self.tearDown()
 
     def test_add_search(self):
-        task = Task("test")
-        date = "0-0-0"
-        records_manager = RecordsManager()
-        self.assertEqual(records_manager.search_record(date), None, "No records for the date yet")
-        records_manager.add_record(task, date)
-        self.assertFalse(records_manager.search_record(date), None)
-        records_manager.delete_record("task", 0, date)
+        self.setUp()
+        self.assertIsNone(self.records_manager.search_records(self.date)["tasks"], "No records for the date yet")
 
+        self.records_manager.add_record(self.task, self.date)
+        self.assertIsNotNone(self.records_manager.search_records(self.date), "Task added successfully")
 
+        self.tearDown()

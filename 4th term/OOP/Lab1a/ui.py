@@ -1,9 +1,10 @@
 from datetime import date
 from records_manager import *
-import enum
 
 
 def make_date(year, month, day):
+    """Formats date arguments to format used in data dictionary"""
+
     if int(int(month) / 10) == 0:
         month = f"0{int(month)}"
     if int(int(day) / 10) == 0:
@@ -21,7 +22,8 @@ class UI:
         print(f"Hello, {username}.\nToday is {date.today()}")
 
     def data_for_today(self):
-        today = date.today()
+        """Prints data for today's date"""
+
         print(f" Meetings planned for today:")
         print(Meeting.view(self.selected_date))
         print(f" To-Do: ")
@@ -35,7 +37,9 @@ class UI:
         return self.selected_date
 
     def _search(self):
-        self.records.search_record(self.ask_for_date())
+        """Asks for date and prints data for entered values"""
+
+        self.records.view_records(self.ask_for_date())
 
     def _mark_task_as_done(self):
         index = int(input(f"Enter task index: "))
@@ -59,6 +63,8 @@ class UI:
         self.records.delete_record(record_type, index, self.selected_date)
 
     def available_commands(self):
+        """Processes user's commands and passes execution to corresponding methods"""
+
         print("Available commands: search, mark_done, add, delete, exit")
         command = input("Enter one of the commands above: ")
 
