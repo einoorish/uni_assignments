@@ -195,18 +195,18 @@ class OrderStatTree <K extends Comparable<K>, V> {
     }
 
     int rank(Node node, K key){
-        Node y = search(node, key);
+        Node x = search(node, key);
+        int rank = 1;
 
-        if(y.left==null)
-            return 1;
+        if(x.left!=null)
+            rank+=x.left.size;
 
-        int rank = y.left.size + 1;
-
-        while(y != root){
-          if(y.parent.right != null && y == y.parent.right)
-              rank += y.parent.left.size+1;
-
-          y = y.parent;
+        Node y = x;
+        while(y!=root){
+            if(y == y.parent.right){
+                rank+=y.parent.left.size+1;
+            }
+            y=y.parent;
         }
         return rank;
     }
@@ -230,13 +230,18 @@ class OrderStatTree <K extends Comparable<K>, V> {
 
     /**Returns the ith smallest key of the tree**/
     public K select(int i) {
-        Node node = select(root, i);
-        return node.key;
+            Node node = select(root, i);
+            return node.key;
     }
 
     /**Returns the rank of key in the linear order determined by an inorder walk through the tree**/
     public int rank(K key){
-        return rank(root, key);
+        try{
+            return rank(root, key);
+        } catch (NullPointerException e){
+            System.out.println("This key doesn't exist");
+            return -1;
+        }
     }
 
     public void insert(K key, V value) {
