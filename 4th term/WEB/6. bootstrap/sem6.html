@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <style>
+        html, body {
+            font-size: 18px;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .sections {
+            background-color: #EEEEEE;
+            padding: 30px;
+        }
+
+        .text {
+            text-align: center;
+            text-justify: auto;
+            margin-bottom: 18px;
+        }
+
+        .avatar-wrapper {
+            height: 210px;
+            width: 210px;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            border: 2px solid red;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 100%;
+        }
+
+        .avatar-crop {
+            object-fit: contain;
+            width: 425%;
+            height: 425%;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .card:nth-child(even) {
+            background-color: #D3D3D3;
+        }
+
+        .socials {
+            display: flex;
+            width: 100%;
+            padding: 0 10%;
+            justify-content: space-around;
+        }
+
+        .social-icon {
+            display: block;
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        #avatar-oko {
+            margin: -380px 0 0 -325px;
+        }
+
+        #avatar-grai {
+            width: 300%;
+            height: 300%;
+
+            margin: -135px 0 0 -269px;
+        }
+
+        #avatar-tur {
+            width: 400%;
+            height: 400%;
+
+            margin: -225px 0 0 -190px;
+        }
+    </style>
+</head>
+
+<body>
+<section class="section sections">
+    <div class="container">
+        <h2 class="title">Наша команда</h2>
+        <p class="text">Ми три козаки із Запорізької Січі. Багато мандруємо по світу, спілкуємось з людьми з різних
+            країн та епох. Навіть зустрічаємось з інопланетянами.
+        </p>
+
+        <div class="row section-container">
+            <div class="card col-12 col-sm-12 col-md-4">
+
+                <div class="avatar-wrapper">
+                    <img class="avatar avatar-crop" id="avatar-oko"
+                         src="https://gdb.rferl.org/BD27754D-9E35-4866-8F21-FC7C0497A8EF.png" alt="oko">
+                </div>
+
+                <h5 class="title">Козак Око</h5>
+
+                <p class="text">Маленький козак, але бадьорий та войовничий.</p>
+
+                <div class="socials">
+                    <img class="social-icon"
+                         src = "data:image/png;base64,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"
+                         alt="google-plus">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt="facebook">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt="telegram">
+                </div>
+            </div>
+            <div class="card col-12 col-sm-12 col-md-4">
+
+                <div class="avatar-wrapper">
+                    <img class="avatar avatar-crop" id="avatar-grai"
+                         src="https://gdb.rferl.org/BD27754D-9E35-4866-8F21-FC7C0497A8EF.png" alt="grai">
+                </div>
+
+                <h5 class="title">Козак Грай</h5>
+
+                <p class="text">Отаман нашої команди. Спокійний та кмітливий козак.</p>
+
+                <div class="socials">
+                    <img class="social-icon"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEVChfT///81f/Q8gvQ6gfS1zfovfPPZ5v0se/OOtPj6/P/d6P3y9v5KivREhvT4+/91o/bJ2vtTj/WvyPrR4PyErffD1vvu9P7p8P5YkvWmwvnW4/y80fuHrvdmmvacvPlvn/aevflpnPaAqPdelvUbdfODUtX4AAAL6UlEQVR4nOWd6ZaqOhBGIYkRmWRox8ap5b7/K17QVgEThkpFwunv31mrj2abqVKpqli2brm+F8/2p1V0zJMgCK0wCJL8GK1O+yz2fFf791saP9v31pdrHjqcEMYopdZLxb8YI4Q7YX49Zd5GYyt0EXrZ4RgUZDUukQpUwoP8kHmaWqKD0EujkBVwHWw1zuLvw3OqgxKb0F+vQocMgatgEic8rH3kFqESbrOIcgaie4gRGs22mI3CI1xmZwrsvGZXWj/ZEq1dWITfK4KC94Ak12+klqEQ+ulOcXAKIPlujzIlEQi9RYjYfRVGEi4QFldlwnnEsLvvJcbOyoNVkfDr6Ojovpeoc/wakfD7zPXy3Rj5jxKjAqEXaZl+AkYSKcxHMOHm8IH+ezLyBXhdBRK6qcb1RSTGUuBBC0b4tSMf5SvFd7DpCCF0Dx+agHVRcoB0I4Awpp8doC8xtv4AoX/lI/GV4tfBK85Qwq9grA68iwWxXsLTKDOwKspPGgm3Iyyh7yL5oBPyEMLYGrsD76LWkJE6gHBvQgfeRfYaCN3IHMACMeq9NfYl3CTjrqFNsaSvF7kn4TwwYwq+RIM5JmHc6br+vCjtt970Ipw5Y+MI5cywCNMx7bQ28RSH8GLSIlpXn12jm/Bkag+W6mHCdRKezJyDDzmdiF2EF5N7sBTvGqgdhKm5c/Ah0rHctBPOTO/BUh2bRithbPYcfMhp3frbCOfmGTJi0TYDroVwY5wtKhMNWsxwOaGbTAWwQEzkhyk5YWTWcaldLBpOaNCJvo/k9puMMJ4WYIEoW1AlhNuxGwyQxAMnIdxNZ5V5iO6GEJ6mNkZLEbERLiT8moKx9i7xVBQR+pPZ6uuigejaRkR4ndJOWBW79iOMpzlGS3HB/eI7oTvNIXoXeY/4eyc8THWMlmKrbsKvKW4UL5G3cIYmoTvBvb4qumueMpqE+gzuMmSd8LvuwftavubNBG8QbrRMwls4/s/1lGbx17c3//5azy6HaEc40fB1zG8l1LDMMM7zS7x9X+Tc5XwGD3uXf9+hjdDD3goZSxbtoUzb2dnCheT1ML86YYT6VZQnpz6XfJvsjDlcaf28XyNE3SmYE617R9xvTxTvu+s7Ro3wjNeFjKyGxYQuUzRGepYR4h2aKFsBskL2IdJY5dVOrBIesbqQA2N6/QXOmkOPYsI5kg+fhUNDzyptyFGGqlP5hSuEOLOQkoVS1uQeoxury+mL0EOZBMNjB5vydggNYa9l4EW4wCDkZ/VMnuVKfcVji3dCP8QAHBgZKdFefUUIn7/0kxDhtpdCgpSFipXn4utm+Emofi6kFlZCXRllptqYp3/4QfitPPZpgJjF+6U8Z/jj534QrlTXGRog5rYi3As9PTa/hEvVj8QFxLA9Hm63X8JM+UdDBFyj2DUkqxGq2jPvLi641H/tmx4njDvhVhUw691+1+0w6vBCPbcVwpnazya516rLn88WUZ4EVhjszod9LBnWKRogmVUI1bwX7KcTb5tGAX9WySjLfnC6E3lwEL2Zv+b3jdBXHKRdQeXrIxOcGCgjwaVhxqIGClL/SbhW+lxpjMBdbhrIs02Zc6iOVtxQz/tN1I1QyUva9E82lAXt446xy/NvF7jOzHvLboRqJlLbeWn7032gJbtfA+uAfaMQPgg9lbHB2zaKtNeBnd7vGq7oVyY3Z4Zlqx2caC7nW/ZOxuRXHYD3I1RJqLJXEPmJaTPAHcEiDYD3/cJSm4YtEXPbQREdeu7awjuhiguKSc+E29CAq9ayeZaSpUulXWhG+G1pL1tKuyGXzkIzLsvLHdFScebLguWMCToqV3qrGE/gD5AemozJBQs2BaGnMA0l94OeEUO0FPEKQvhCI7VI0S6xlEXWBeEJPGW4xHWRmTJGi064FIRX8A+eiAepi3E/gCR6LQhzKKEghuwmk6L8i8XUgv/ikpV0mWA2UVWBa/nwo5PYl2TQLCzk+BY8SCgRD9IfYxbSUtyzwFcEkmm4NaoLLRJb4O2QiBMb92bYaw+RzAK3SGJ1m2FyP8VSC7zhO8LdsHvhogQg8MBgJ2sF/c2psAs7A/3pOZsNF3ik0ZUFddJIXFCdQ6ISJTFE0D2NRhbUSqai7I0e13RAQlgjywAwKwf+Vya+b+o8bAIJwceV3ILaWEyYtLnstAGBhGBXS2JBT/ji7bA7MxNIeIESBnBCod3d7ZkEEoL98oEFPVqICee6CMG31PDDKhFGeGkjVHDqTqQPwREo4VTmIZhQYaX57FoKHqXBVPZDMGEyFZsGvFvkU7FLoYeLwi5FPlt02h5AQmgUenG2+PT5EEgI9VvTw8fP+EBCqN+6OOOnH/bTfPh8yFILbPABfW306s1bJQySc6FnfJJ93l9Keav+E9q7YL81iY3zeTvCPgQbbdwz7t4iEH4ofD30Tbt7qkQqVgV20wSuafeHXBiCtISeD8r7Q7PugKk4oHoO/dFud8BG3eNzcbwxeFjc7vFNisWQxXKC00FusRgmxdNIunADbuEtnsagmChZLCc8TSjwy7g28GKKHtfWLEvyEDjEt0xbV4xNlKY7QS5KZUPCV1opDIovJbJTBzwO/Te+VFOM8NAHTdhZ9lFwI+k3RtiIOG+LSYP+FSqu/MZ5mxCrb5GztNILPDfyGas/fr6Fxa/SrMTuiwKpnvkWY+fMFIfiltLxCvWMnzkzevOeuj/gmfgkkkoa/TPvadTcNYuxfVveLNweqeauac4/DOX5h5TwRWt+porHoJJ/qD2H9Ef4njUlLEnbi2X5Su165ZAq5gFLjq1VNfOA71X49p11JlTyNqp5wB/P5T5eTzOxY7QupdoDtVxu1fLdmPn4FSmWCajm4xtVU+ElpUjOx6nAxLoYD62UGtWoi2FWbZO7FLMaiFsjNKw+TSnFN26a9WlMqzFUzBvF4gNvNYYMqxOlnLXxXifKrFpf6q0R1PoyqV6bvVCujyGo12ZOzT3bj5QXBVHNPWPqJtrfCE+eVjxkldqXOEWEgS+gv3RBKH4prn2JV7900IPEDeEUMHUqBZr11KA993zntakNThFaWQ3a0esIu1iFhB1ZHeFRa0Hbyz1WMWh5LWj0et5x73retrdgaF9e91Lrrcke9KrJbm/TI2JR9raa7GPU1bfn+1zopwKrta4+jmFTV/k2wkn0NoK93MaXH8IZbk5mMzSwQajqVxTr5lk71t632C+ux9AhyHS3L1u2EmqsSnJ7o4Rof6Pk7SXrt5d0DMvjHar30IK/91bQ1N97eo8F+Mfe7KLv55p/7N01walG9HaesmdxLAnjQf/m+4dTXU/Flyd/9B1SpdvzsSSLe/mz7wH/+286m1Wxq4eGv8v9B95Wt91kOqsNTeReaDmhIUVW+4gGLXEdLYT2fDKEbf6uNkKct0L0y2m9RWglVL1L/4wccapnP0KMm2HdIk3HzDBCe296L7YF3/YiRH6QAV1O5716JyHuoxrY6hE40E1osv0mt9UGEZpTu7opp2OR6U2I+EARqjq2iSGEdqzJBa8iSvuFC/QjtOfG2ai9w+h6EtobhCAXTLGkRxD1IELbjUxaUknUO2inN6FRu0afXQJAaMdDUwo1iQ4KSRpCaG9xXlxWFMkHxeoMIixdxWN3Ix0a4TmQ0P4aeU0dHvs4lND2EV5chouvBsevDiYsDZyxupH1NGNUCe3lYZTZCIxchRAWszH//FDlO1jmEYywOFGxzw5VRvuclDAJbX8hzwxFF+WL/mGOWIS27UUfmo6URArpOAqEtv0dOfoZKT8rpf4pERaMR82M1DkqpjYqEhZj9apxzWEMGhOPSFjY46dQy4SkJFwgpMMhEBbrarrj2B3J+G6PkGGERFjo+0AQO5ISssJK9cMiLGy5LLJw8kGIdc7UMouqwiMstM0iqjhcGbeiGWq+LSphIT8+hA6wKylxwsMaZfJVhE1YykujkA0LUqfF34fnFDWT+Fc6CEt52eEYENIdr34LcA/yQ6aDrpQuwlK+t75c88D5Dc2nNS7KCjLuBPn1lHl9vbsQ6SS8y/W9OEtPq+iYJ0EQWmEQJPkxOpTZF56Pt2bK9D9jWq8daboTowAAAABJRU5ErkJggg=="
+                         alt="google-plus">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt="facebook">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt = "telegram">
+                </div>
+            </div>
+            <div class="card col-12 col-sm-12 col-md-4">
+
+                <div class="avatar-wrapper">
+                    <img class="avatar avatar-crop" id="avatar-tur"
+                         src="https://gdb.rferl.org/BD27754D-9E35-4866-8F21-FC7C0497A8EF.png" alt="tur">
+                </div>
+
+                <h5 class="title">Козак Тур</h5>
+
+                <p class="text">Здоровий та сильний козак. Часто буває сором'язливим.</p>
+
+                <div class="socials">
+                    <img class="social-icon"
+                         src="data:image/png;base64,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"
+                         alt="google-plus">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt="facebook">
+                    <img class="social-icon"
+                         src="https://cdn.iconscout.com/icon/free/png-512/facebook-logo-2019-1597680-1350125.png"
+                         alt="telegram">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>
