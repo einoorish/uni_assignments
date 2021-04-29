@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@grid-gutter-width: 20px;
+@row-height: 100px;
+@column-count: 3;
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(@column-count, 1fr);
+  grid-auto-rows: @row-height;
+  grid-auto-flow: row dense; 
+  grid-gap: @grid-gutter-width;
+}
+
+  .a, .b, .c, .d {
+    background: grey;
+    margin: 2px;
+  }
+
+  .a, .c {
+    grid-column-end: span 3; // 3 cells wide
+  }
+
+  .d{
+      grid-column-end: span 2; 
+  }
+  
+  .c{
+    grid-column-end: span 3; 
+    height: 200px;
+  } 
+}
+</style>
+</head>
+  
+<body>
+    <div class="grid-layout">
+  <div class="a" >
+    a
+  </div>
+  <div class="b">
+    b
+  </div>
+  <div class="c" >
+    c
+  </div>
+  <div class="d">
+   d
+  </div>
+</div>
+</body>
+</html>
