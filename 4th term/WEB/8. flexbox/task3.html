@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 3px solid red;
+  }
+  
+  .container > div {
+    box-sizing:border-box;
+    padding: 25px;
+    flex-basis: 60px;
+  }
+  
+  .type1{
+    justify-content: flex-start;
+  }
+  
+  .type2{
+    justify-content: flex-end;
+  }
+  
+  .type3{
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .type4{
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .type5{
+    justify-content: space-between;
+  }
+  
+  .rect1{
+    height: 100px;
+    background-color:blue;
+  }
+
+  .rect2{
+    background-color:yellow;
+  }
+  
+  .rect3{
+    height: 80px;
+    background-color:orange;
+  }
+  
+  .rect4{
+    height: 90px;
+    background-color:red;
+  }
+</style>
+
+</head>
+<body>
+  <div class="container type1">
+    <div class="rect1">1</div>
+    <div class="rect2">2</div>
+    <div class="rect3">3</div>
+    <div class="rect4">4</div>
+  </div>
+  <br>
+  <div class="container type2">
+    <div class="rect1">1</div>
+    <div class="rect2">2</div>
+    <div class="rect3">3</div>
+    <div class="rect4">4</div>
+  </div>
+  <br>
+  <div class="container type3">
+    <div class="rect1">1</div>
+    <div class="rect2">2</div>
+    <div class="rect3">3</div>
+    <div class="rect4">4</div>
+  </div>
+  <br>
+  <div class="container type4">
+    <div class="rect1">1</div>
+    <div class="rect2">2</div>
+    <div class="rect3">3</div>
+    <div class="rect4">4</div>
+  </div>
+  <br>
+  <div class="container type5">
+    <div class="rect1">1</div>
+    <div class="rect2">2</div>
+    <div class="rect3">3</div>
+    <div class="rect4">4</div>
+  </div>
+</body>
+</html>
