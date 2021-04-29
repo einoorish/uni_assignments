@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+	position:relative;
+	top: 110px;
+	left: 300px;
+ }
+.ellipse{
+  position:relative;
+  z-index:2;
+	top: 140px;
+	right:80px;
+	height: 200px;
+  width: 280px;
+  background:red;
+  border-radius:100%;
+	background-color:yellow;
+  border:5px solid blue;
+}
+.circle{
+  position:relative;
+  z-index:1;
+	left:100px;
+  bottom: 30px;
+	height: 250px;
+  width: 250px;
+  border-radius:100%;
+  background-color:red;
+}
+.square{
+	position:relative;
+  z-index:3;
+	bottom:200px;
+  left:240px;
+	height: 300px;
+  width: 300px;
+	background-color:green;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="ellipse"></div>
+<div class="circle"></div>
+<div class="square"></div>
+</div>
+</body>
+</html>
+
