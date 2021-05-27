@@ -1,9 +1,9 @@
 #include "factory.h"
 #include "strategy.h"
 
-Solve* Factory::CreateSolveObject(int methodNumber){
+Solve* Factory::createSolveObject(int methodNumber){
     switch(methodNumber){
-        case Strategy::Method1:
+        case Strategy::Strategies::Method1:
             return new Method1();
         default:
             return NULL;

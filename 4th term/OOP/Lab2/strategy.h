@@ -1,6 +1,6 @@
 #ifndef STRATEGY_H
 #define STRATEGY_H
-#include "Solve.h"
+#include "solve.h"
 #include "map"
 
 class Strategy
@@ -13,8 +13,8 @@ private:
      static std::map<Strategies, Solve*> solvePtr;
      static void initMethods();
 public:
-     static int solvingMethod(Solve* solvePrt, int*& arr, int size);
-     static int solvingMethod(Strategies strategy, int*& arr, int size);
+     static double* solvingMethod(Solve* solvePrt, double** matrix, int rows, int cols);
+     static double* solvingMethod(Strategies strategy, double** matrix, int rows, int cols);
 };
 
 #endif // STRATEGY_H

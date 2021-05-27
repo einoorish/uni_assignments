@@ -1,6 +1,6 @@
 #ifndef FACTORY_H
 #define FACTORY_H
-#import "Solve.h"
+#import "solve.h"
 
 class Factory
 {
