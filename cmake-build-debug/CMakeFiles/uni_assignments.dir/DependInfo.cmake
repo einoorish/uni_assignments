@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/factory.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/factory.cpp.obj"
   "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/main.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/main.cpp.obj"
   "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/mainwindow.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/mainwindow.cpp.obj"
+  "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/matrix.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/matrix.cpp.obj"
   "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/solve.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/solve.cpp.obj"
   "C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/strategy.cpp" "C:/Users/User/Desktop/uni_assignments/cmake-build-debug/CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/strategy.cpp.obj"
   )

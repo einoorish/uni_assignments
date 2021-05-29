@@ -1,6 +1,6 @@
 #ifndef METHOD_H
 #define METHOD_H
-#iclude <matrix>
+#include "matrix.h"
 class Solve
 {
     protected:
@@ -8,7 +8,7 @@ class Solve
 
         virtual double* solvingMethod() = 0;
     public:
-        double* startMethod(double** matrix, int rows, int cols);
+        double* startMethod(Matrix matrix);
 };
 
 class Method1:public Solve{

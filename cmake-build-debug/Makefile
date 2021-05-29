@@ -223,6 +223,33 @@ uni_assignments/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\uni_assignments.dir\build.make CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/mainwindow.cpp.s
 .PHONY : 4th_term/OOP/Lab2/mainwindow.cpp.s
 
+4th_term/OOP/Lab2/matrix.obj: 4th_term/OOP/Lab2/matrix.cpp.obj
+
+.PHONY : 4th_term/OOP/Lab2/matrix.obj
+
+# target to build an object file
+4th_term/OOP/Lab2/matrix.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\uni_assignments.dir\build.make CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/matrix.cpp.obj
+.PHONY : 4th_term/OOP/Lab2/matrix.cpp.obj
+
+4th_term/OOP/Lab2/matrix.i: 4th_term/OOP/Lab2/matrix.cpp.i
+
+.PHONY : 4th_term/OOP/Lab2/matrix.i
+
+# target to preprocess a source file
+4th_term/OOP/Lab2/matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\uni_assignments.dir\build.make CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/matrix.cpp.i
+.PHONY : 4th_term/OOP/Lab2/matrix.cpp.i
+
+4th_term/OOP/Lab2/matrix.s: 4th_term/OOP/Lab2/matrix.cpp.s
+
+.PHONY : 4th_term/OOP/Lab2/matrix.s
+
+# target to generate assembly for a file
+4th_term/OOP/Lab2/matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\uni_assignments.dir\build.make CMakeFiles/uni_assignments.dir/4th_term/OOP/Lab2/matrix.cpp.s
+.PHONY : 4th_term/OOP/Lab2/matrix.cpp.s
+
 4th_term/OOP/Lab2/solve.obj: 4th_term/OOP/Lab2/solve.cpp.obj
 
 .PHONY : 4th_term/OOP/Lab2/solve.obj
@@ -295,6 +322,9 @@ help:
 	@echo ... 4th_term/OOP/Lab2/mainwindow.obj
 	@echo ... 4th_term/OOP/Lab2/mainwindow.i
 	@echo ... 4th_term/OOP/Lab2/mainwindow.s
+	@echo ... 4th_term/OOP/Lab2/matrix.obj
+	@echo ... 4th_term/OOP/Lab2/matrix.i
+	@echo ... 4th_term/OOP/Lab2/matrix.s
 	@echo ... 4th_term/OOP/Lab2/solve.obj
 	@echo ... 4th_term/OOP/Lab2/solve.i
 	@echo ... 4th_term/OOP/Lab2/solve.s

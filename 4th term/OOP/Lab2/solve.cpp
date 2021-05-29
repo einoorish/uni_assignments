@@ -1,9 +1,8 @@
 #include "solve.h"
 
-double* Solve::startMethod (double** matrix, int rows, int cols){
+double* Solve::startMethod (Matrix matrix){
     this->_matrix = matrix;
-    this->_rows = rows;
-    this->_cols = cols;
+
 
     double* result = solvingMethod();
     return result;
