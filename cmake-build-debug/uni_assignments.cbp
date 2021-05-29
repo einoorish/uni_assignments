@@ -108,6 +108,9 @@
 		<Unit filename="C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/mainwindow.ui">
 			<Option target="uni_assignments"/>
 		</Unit>
+		<Unit filename="C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/matrix.h">
+			<Option target="uni_assignments"/>
+		</Unit>
 		<Unit filename="C:/Users/User/Desktop/uni_assignments/4th term/OOP/Lab2/solve.cpp">
 			<Option target="uni_assignments"/>
 		</Unit>

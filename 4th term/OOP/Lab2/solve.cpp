@@ -10,5 +10,6 @@ double* Solve::startMethod (double** matrix, int rows, int cols){
 }
 
 double* Method1::solvingMethod(){
+
     return nullptr;
 }

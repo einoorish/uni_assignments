@@ -1,12 +1,10 @@
 #ifndef METHOD_H
 #define METHOD_H
-
+#iclude <matrix>
 class Solve
 {
     protected:
-        double** _matrix;
-        int _rows;
-        int _cols;
+        Matrix _matrix;
 
         virtual double* solvingMethod() = 0;
     public:

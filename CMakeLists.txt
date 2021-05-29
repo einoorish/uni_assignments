@@ -17,4 +17,4 @@ add_executable(uni_assignments
         "4th term/OOP/Lab2/solve.cpp"
         "4th term/OOP/Lab2/solve.h"
         "4th term/OOP/Lab2/strategy.cpp"
-        "4th term/OOP/Lab2/strategy.h")
+        "4th term/OOP/Lab2/strategy.h" "4th term/OOP/Lab2/matrix.h")
