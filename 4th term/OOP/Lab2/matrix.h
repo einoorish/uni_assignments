@@ -15,10 +15,12 @@ public:
     Matrix(double** data, double* free_var,  int rows, int cols);
     double determinant();
     Matrix subMatrix(int p,int q);
-   /*const Matrix& operator=(Matrix& matr){
-        Matrix temp(matr._data,matr._free_var,matr._rows,matr._cols);
 
-        return temp;
-    };*/
+    int getRows() const;
+
+    int getCols() const;
+
+
 };
+
 #endif //UNI_ASSIGNMENTS_MATRIX_H

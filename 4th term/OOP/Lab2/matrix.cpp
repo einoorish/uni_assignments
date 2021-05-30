@@ -55,7 +55,11 @@ Matrix::Matrix(double **data,double* free_var,int rows, int cols){
         _free_var=free_var;
     }
 }
-
+int Matrix::getRows() const{
+    return _rows;
+}int Matrix::getCols() const{
+    return _cols;
+}
 
 
 
