@@ -8,7 +8,7 @@ double* Solve::startMethod (Matrix matrix){
     return result;
 }
 
-double* Method1::solvingMethod(){
+double* Kramer::solvingMethod(){
 
     return nullptr;
 }

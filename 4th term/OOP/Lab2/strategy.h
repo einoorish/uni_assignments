@@ -7,14 +7,14 @@ class Strategy
 {
 public:
      enum Strategies{
-         Method1
+         Kramer
      };
 private:
      static std::map<Strategies, Solve*> solvePtr;
      static void initMethods();
 public:
-     static double* solvingMethod(Solve* solvePrt, double** matrix, int rows, int cols);
-     static double* solvingMethod(Strategies strategy, double** matrix, int rows, int cols);
+     static double* solvingMethod(Solve* solvePrt, Matrix matrix);
+     static double* solvingMethod(Strategies strategy, Matrix matrix);
 };
 
 #endif // STRATEGY_H

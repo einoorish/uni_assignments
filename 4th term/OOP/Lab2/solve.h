@@ -11,7 +11,7 @@ class Solve
         double* startMethod(Matrix matrix);
 };
 
-class Method1:public Solve{
+class Kramer:public Solve{
 public:
     double* solvingMethod() override;
 };
