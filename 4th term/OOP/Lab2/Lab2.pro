@@ -12,12 +12,14 @@ SOURCES += \
     factory.cpp \
     main.cpp \
     mainwindow.cpp \
+    matrix.cpp \
     solve.cpp \
     strategy.cpp
 
 HEADERS += \
     factory.h \
     mainwindow.h \
+    matrix.h \
     solve.h \
     strategy.h
 

@@ -3,8 +3,8 @@
 
 Solve* Factory::createSolveObject(int methodNumber){
     switch(methodNumber){
-        case Strategy::Strategies::Kramer:
-            return new Method1();
+        case Strategy::Kramer:
+            return new Kramer();
         default:
             return NULL;
     }

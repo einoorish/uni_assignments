@@ -2,12 +2,12 @@
 #include "factory.h"
 
 std::map<Strategy::Strategies, Solve*> Strategy::solvePtr;
-double* Strategy::solvingMethod(Solve *solvePtr, Matrix matrix){
-    if(solvePtr == nullptr){
+double* Strategy::solvingMethod(Solve *solve, Matrix matrix){
+    if(solvePtr.empty()){
         initMethods();
     }
 
-    double* result = solvePtr->startMethod(matrix);
+    double* result = solve->startMethod(matrix);
     return result;
 }
 

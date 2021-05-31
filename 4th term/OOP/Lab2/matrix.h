@@ -10,6 +10,7 @@ protected:
     int _rows;
     int _cols;
 public:
+    Matrix(){}
     double* _free_var;
     double** _data;
     Matrix(double** data, double* free_var,  int rows, int cols);
@@ -19,6 +20,7 @@ public:
     int getRows() const;
 
     int getCols() const;
+
 
 
 };
