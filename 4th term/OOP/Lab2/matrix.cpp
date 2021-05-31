@@ -55,7 +55,6 @@ Matrix::Matrix(double **data, double* free_var,int rows, int cols){
             _data[i][j] = data[i][j];
         }
     }
-//    std::copy(&data[0][0], &data[0][0]+rows*cols,&_data[0][0]);
     //_data=data;
     _free_var=free_var;
 }

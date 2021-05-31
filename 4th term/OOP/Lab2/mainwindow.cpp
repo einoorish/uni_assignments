@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->input->insertPlainText("1 3 3 4\n0 -1 7 8\n0 1 11 12\n0 1 15 16");
+    ui->freeVars->insertPlainText("1 2 3 0");
 }
 
 MainWindow::~MainWindow()
@@ -15,9 +18,10 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_calculate_pressed()
-{/*
+{
     QStringList input = ui->input->toPlainText().split("\n");
 
+    //reading matrix------------------------
     QList<QList<double>> matrix;
     int rowsNumber = 0; int columnsNumber = 0;
 
@@ -36,18 +40,33 @@ void MainWindow::on_calculate_pressed()
         columnsNumber = cols.size();
     }
 
-    std::cout<<rowsNumber;
-    //double* result = Strategy::solvingMethod(0, matrix.toStdList(), rowsNumber, columnsNumber);
-    QString res;
-    for(int i=0; i<matrix.at(1).size(); i++){
-        res += QString::number(matrix.at(1).at(i),'f', 2);
-        std::cout<<res.toUtf8().constData();
-        if(i<res.size()-1)
-            res += "," ;
+    double **data = new double*[rowsNumber];
+    for(int i =0 ; i < rowsNumber; i++){
+        data[i]=new double[columnsNumber];
+        for(int j = 0; j < columnsNumber; j++){
+            data[i][j] = matrix[i][j];
+            std::cout << data[i][j] << " ";
+
+        }
+        std::cout << std::endl;
     }
 
-    ui->result->insert(res);*/
-    double **temp_data = new double *[4];
+    //reading free vars-----------------------
+    double* freeVars = new double[columnsNumber];
+    int i = 0;
+    foreach(QString val, ui->freeVars->toPlainText().split(" ")){
+        bool check = false;
+        double colValue = val.toDouble(&check);
+        if(check){
+            freeVars[i++] = colValue;
+        }
+    }
+
+
+
+    double* result = Strategy::solvingMethod(Strategy::Strategies::Kramer, Matrix(data, freeVars, rowsNumber, columnsNumber));
+
+       /*double **temp_data = new double *[4];
        for(int i = 0; i < 4; ++i)
            temp_data[i] = new double [4];
        temp_data[0][0]=1;
@@ -74,8 +93,8 @@ void MainWindow::on_calculate_pressed()
        Matrix mat(temp_data,row,4,4);
        double a=mat.determinant();
        std::cout<<a;
+       */
 
-       double* result = Strategy::solvingMethod(Strategy::Strategies::Kramer, mat);
        QString result_str;
        for(int i = 0; i < 4; i++){
           result_str.append(QString::number(result[i]));
