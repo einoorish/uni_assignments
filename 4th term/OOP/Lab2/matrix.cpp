@@ -1,6 +1,4 @@
-//
-// Created by User on 029 29.05.21.
-//
+#include <algorithm>
 #include <exception>
 #include "matrix.h"
 double Matrix::determinant() {
@@ -47,14 +45,21 @@ Matrix Matrix::subMatrix(int p,int q) {
     return Matrix(temp,_free_var,_rows-1,_cols-1 );
 }
 
-Matrix::Matrix(double **data,double* free_var,int rows, int cols){
-
-    {    _cols=cols;
-        _rows=rows;
-        _data=data;
-        _free_var=free_var;
+Matrix::Matrix(double **data, double* free_var,int rows, int cols){
+   _cols=cols;
+    _rows=rows;
+    _data = new double*[rows];
+    for(int i =0 ; i < rows; i++){
+        _data[i]=new double[cols];
+        for(int j = 0; j < cols; j++){
+            _data[i][j] = data[i][j];
+        }
     }
+//    std::copy(&data[0][0], &data[0][0]+rows*cols,&_data[0][0]);
+    //_data=data;
+    _free_var=free_var;
 }
+
 int Matrix::getRows() const{
     return _rows;
 }int Matrix::getCols() const{
