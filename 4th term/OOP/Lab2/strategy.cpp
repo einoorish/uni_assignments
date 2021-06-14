@@ -25,4 +25,6 @@ double* Strategy::solvingMethod(Strategies strategy, Matrix matrix){
 
 void Strategy::initMethods(){
     solvePtr.insert(std::pair<Strategies, Solve*>(Kramer, Factory::createSolveObject(Kramer)));
+    solvePtr.insert(std::pair<Strategies, Solve*>(Jacobi, Factory::createSolveObject(Jacobi)));
+    solvePtr.insert(std::pair<Strategies, Solve*>(Method3, Factory::createSolveObject(Method3)));
 }

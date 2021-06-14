@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "strategy.h"
+#include <qgroupbox.h>
+#include <QRadioButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,7 +22,12 @@ public:
 private slots:
     void on_calculate_pressed();
 
+    void on_radioButton_clicked();
+    void on_radioButton_2_clicked();
+    void on_radioButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Strategy::Strategies strategy;
 };
 #endif // MAINWINDOW_H

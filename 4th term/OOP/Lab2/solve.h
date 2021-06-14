@@ -1,7 +1,7 @@
 #ifndef METHOD_H
 #define METHOD_H
 #include "matrix.h"
-
+#include <cmath>
 #include "iostream"
 
 class Solve
@@ -17,6 +17,18 @@ class Kramer:public Solve{
 public:
     double* solvingMethod() override;
     Kramer(): Solve(){_matrix = new Matrix();};
+};
+
+class Jacobi:public Solve{
+public:
+    double* solvingMethod() override;
+    Jacobi(): Solve(){_matrix = new Matrix();};
+};
+
+class Zeidel:public Solve{
+public:
+    double* solvingMethod() override;
+    Zeidel(): Solve(){_matrix = new Matrix();};
 };
 
 #endif // METHOD_H

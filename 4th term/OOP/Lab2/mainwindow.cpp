@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->input->insertPlainText("1 3 3 4\n0 -1 7 8\n0 1 11 12\n0 1 15 16");
     ui->freeVars->insertPlainText("1 2 3 0");
+    strategy = Strategy::Strategies::Kramer;
 }
 
 MainWindow::~MainWindow()
@@ -62,10 +63,6 @@ void MainWindow::on_calculate_pressed()
         }
     }
 
-
-
-    double* result = Strategy::solvingMethod(Strategy::Strategies::Kramer, Matrix(data, freeVars, rowsNumber, columnsNumber));
-
        /*double **temp_data = new double *[4];
        for(int i = 0; i < 4; ++i)
            temp_data[i] = new double [4];
@@ -95,11 +92,33 @@ void MainWindow::on_calculate_pressed()
        std::cout<<a;
        */
 
+       ui->result->clear();
        QString result_str;
-       for(int i = 0; i < 4; i++){
-          result_str.append(QString::number(result[i]));
-          result_str.append(" ");
+       double* result;
+       try{
+           result = Strategy::solvingMethod(strategy, Matrix(data, freeVars, rowsNumber, columnsNumber));
+           for(int i = 0; i < columnsNumber; i++){
+               result_str.append(QString::number(result[i]));
+               result_str.append(" ");
+            }
+       } catch (char const* message){
+           result_str = QString::fromStdString(message);
        }
 
        ui->result->insert(result_str);
+}
+
+void MainWindow::on_radioButton_clicked()
+{
+    strategy = Strategy::Strategies::Kramer;
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    strategy = Strategy::Strategies::Jacobi;
+}
+
+void MainWindow::on_radioButton_3_clicked()
+{
+    strategy = Strategy::Strategies::Method3;
 }
