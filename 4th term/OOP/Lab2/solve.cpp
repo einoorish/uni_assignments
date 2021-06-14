@@ -25,3 +25,21 @@ double* Kramer::solvingMethod(){
 
     return ans;
 }
+double* Jacobi::solvingMethod() {
+    if (this->_matrix->determinant() == 0)
+        return nullptr;
+    auto *ans = new double[_matrix->getCols()];
+
+
+
+    return ans;
+}
+double* Zeidel::solvingMethod() {
+    if (this->_matrix->determinant() == 0)
+        return nullptr;
+    auto *ans = new double[_matrix->getCols()];
+
+
+
+    return ans;
+}

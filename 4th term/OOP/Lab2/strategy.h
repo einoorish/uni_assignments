@@ -7,7 +7,9 @@ class Strategy
 {
 public:
      enum Strategies{
-         Kramer
+         Kramer,
+         Jacobi,
+         Zeidel
      };
 private:
      static std::map<Strategies, Solve*> solvePtr;
