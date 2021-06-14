@@ -64,5 +64,60 @@ double* Jacobi::solvingMethod() {
 }
 
 double* Zeidel::solvingMethod(){
-    return nullptr;
+    double *ans, max;
+    int k, index;
+    const double eps = 0.00001;
+    ans = new double[_matrix->getCols()];
+    k = 0;
+    while (k < _matrix->getCols())
+    {
+
+        max = abs(_matrix->_data[k][k]);
+        index = k;
+        for (int i = k + 1; i < _matrix->getCols(); i++)
+        {
+            if (abs(_matrix->_data[i][k]) > max)
+            {
+                max = abs(_matrix->_data[i][k]);
+                index = i;
+            }
+        }
+
+        if (max < eps)
+        {
+            return nullptr;
+        }
+        for (int j = 0; j < _matrix->getCols(); j++)
+        {
+            double temp = _matrix->_data[k][j];
+            _matrix->_data[k][j] = _matrix->_data[index][j];
+            _matrix->_data[index][j] = temp;
+        }
+        double temp = _matrix->_free_var[k];
+        _matrix->_free_var[k] = _matrix->_free_var[index];
+        _matrix->_free_var[index] = temp;
+
+        for (int i = k; i < _matrix->getCols(); i++)
+        {
+            double temp = _matrix->_data[i][k];
+            if (abs(temp) < eps) continue;
+            for (int j = 0; j < _matrix->getCols(); j++)
+                _matrix->_data[i][j] = _matrix->_data[i][j] / temp;
+            _matrix->_free_var[i] = _matrix->_free_var[i] / temp;
+            if (i == k)  continue;
+            for (int j = 0; j < _matrix->getCols(); j++)
+                _matrix->_data[i][j] = _matrix->_data[i][j] - _matrix->_data[k][j];
+            _matrix->_free_var[i] = _matrix->_free_var[i] - _matrix->_free_var[k];
+        }
+        k++;
+    }
+
+    for (k = _matrix->getCols() - 1; k >= 0; k--)
+    {
+        ans[k] = _matrix->_free_var[k];
+        for (int i = 0; i < k; i++)
+            _matrix->_free_var[i] = _matrix->_free_var[i] - _matrix->_data[i][k] * ans[k];
+    }
+    return ans;
+   
 }
