@@ -28,7 +28,19 @@ double* Kramer::solvingMethod(){
 double* Jacobi::solvingMethod() {
     if (this->_matrix->determinant() == 0)
         return nullptr;
-    auto *ans = new double[_matrix->getCols()];
+
+    int i, j, k = 1;
+    double sum;
+    for (i = 0; i < _matrix->getCols(); i++) {
+        sum = 0;
+        for (j = 0; j < _matrix->getCols(); j++) sum += abs(_matrix->_data[i][j]);
+        sum -= abs(_matrix->_data[i][i]);
+        if (sum > _matrix->_data[i][i])
+            throw("Matrix is not Diagonally dominant");
+
+
+
+        auto *ans = new double[_matrix->getCols()];
     for(int i=0;i<_matrix->getCols();i++) ans[i]=1;
     double eps=0.01;
     double* temp = new double[_matrix->getCols()];
