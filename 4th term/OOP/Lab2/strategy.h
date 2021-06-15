@@ -9,7 +9,7 @@ public:
      enum Strategies{
          Kramer,
          Jacobi,
-         Method3
+         Gauss
      };
 private:
      static std::map<Strategies, Solve*> solvePtr;

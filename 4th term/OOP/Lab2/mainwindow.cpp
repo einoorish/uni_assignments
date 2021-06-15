@@ -91,5 +91,5 @@ void MainWindow::on_radioButton_2_clicked()
 
 void MainWindow::on_radioButton_3_clicked()
 {
-    strategy = Strategy::Strategies::Method3;
+    strategy = Strategy::Strategies::Gauss;
 }

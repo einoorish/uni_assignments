@@ -16,7 +16,7 @@ signals:
 private slots:
     void test_Kramer();
     void test_Jacobi();
-    void test_Zeidel();
+    void test_Gauss();
 };
 
 #endif // TEST_H

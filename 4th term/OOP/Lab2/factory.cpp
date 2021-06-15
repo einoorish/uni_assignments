@@ -7,8 +7,8 @@ Solve* Factory::createSolveObject(int methodNumber){
             return new Kramer();
         case Strategy::Jacobi:
             return new Jacobi();
-        case Strategy::Method3:
-            return new Zeidel();
+        case Strategy::Gauss:
+            return new Gauss();
         default:
             return NULL;
     }

@@ -25,10 +25,10 @@ public:
     Jacobi(): Solve(){_matrix = new Matrix();};
 };
 
-class Zeidel:public Solve{
+class Gauss:public Solve{
 public:
     double* solvingMethod() override;
-    Zeidel(): Solve(){_matrix = new Matrix();};
+    Gauss(): Solve(){_matrix = new Matrix();};
 };
 
 #endif // METHOD_H

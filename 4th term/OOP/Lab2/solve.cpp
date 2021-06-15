@@ -63,7 +63,7 @@ double* Jacobi::solvingMethod() {
     return ans;
 }
 
-double* Zeidel::solvingMethod(){
+double* Gauss::solvingMethod(){
     double *ans, max;
     int k, index;
     const double eps = 0.00001;
@@ -71,14 +71,13 @@ double* Zeidel::solvingMethod(){
     k = 0;
     while (k < _matrix->getCols())
     {
-
-        max = abs(_matrix->_data[k][k]);
+        max = fabs(_matrix->_data[k][k]);
         index = k;
         for (int i = k + 1; i < _matrix->getCols(); i++)
         {
-            if (abs(_matrix->_data[i][k]) > max)
+            if (fabs(_matrix->_data[i][k]) > max)
             {
-                max = abs(_matrix->_data[i][k]);
+                max = fabs(_matrix->_data[i][k]);
                 index = i;
             }
         }
@@ -100,7 +99,7 @@ double* Zeidel::solvingMethod(){
         for (int i = k; i < _matrix->getCols(); i++)
         {
             double temp = _matrix->_data[i][k];
-            if (abs(temp) < eps) continue;
+            if (fabs(temp) < eps) continue;
             for (int j = 0; j < _matrix->getCols(); j++)
                 _matrix->_data[i][j] = _matrix->_data[i][j] / temp;
             _matrix->_free_var[i] = _matrix->_free_var[i] / temp;
@@ -119,5 +118,4 @@ double* Zeidel::solvingMethod(){
             _matrix->_free_var[i] = _matrix->_free_var[i] - _matrix->_data[i][k] * ans[k];
     }
     return ans;
-   
 }

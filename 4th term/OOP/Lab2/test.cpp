@@ -47,5 +47,5 @@ void Test::test_Jacobi(){
 
 }
 
-void Test::test_Zeidel(){
+void Test::test_Gauss(){
 }
