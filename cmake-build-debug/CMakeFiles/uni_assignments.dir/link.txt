@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\uni_assignments.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\uni_assignments.dir/objects.a @CMakeFiles\uni_assignments.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\uni_assignments.dir/objects.a -Wl,--no-whole-archive  -o uni_assignments.exe -Wl,--out-implib,libuni_assignments.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\uni_assignments.dir\linklibs.rsp
