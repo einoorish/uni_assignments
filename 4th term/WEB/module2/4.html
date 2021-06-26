@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+  #container #editor {
+      border: 1px solid grey;
+      height: 100px;
+      width: 600px;
+      padding:10px;
+     }
+  #container fieldset {
+      width: 590px;
+      height:20px;
+      background-color: lightgrey;
+  }
+</style>
+  
+<head>
+  <meta charset='utf-8'>
+  <script type="text/javascript">
+      function italic(){
+      document.execCommand('italic',false,null);
+    }
+
+    function bold(){
+      document.execCommand( 'bold',false,null);
+    }
+
+    function underline(){
+      document.execCommand( 'underline',false,null);
+    }
+
+    function toUppercase(){
+      var content = window.document.getElementById("editor");
+      var selection = window.getSelection().toString();
+      if (selection) {
+        var upper;
+        if (selection == selection.toUpperCase()){
+         upper = selection.toLowerCase(); 
+        } else upper = selection.toUpperCase(); 
+        var text = content.textContent;
+        content.textContent =text.replace(selection, upper);
+      }
+    }
+
+    function chooseColor(){
+      var mycolor = document.getElementById("myColor").value;
+      document.execCommand('foreColor', false, mycolor);
+    }
+
+    function changeFont(){
+      var myFont = document.getElementById("input-font").value;
+      document.execCommand('fontName', false, myFont);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="container" >
+    <fieldset>
+      <button onclick="italic();"><i>Italic</i></button>
+      <button onclick="bold();"><b>Bold</b></button>
+      <button class="fontStyle underline" onclick="underline();"><u>Underline</u></button>
+      <select id="input-font" class="input"  onchange="changeFont();">
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+      </select>
+      <button onclick="toUppercase();">Uppercase</button>
+      <input class="color-apply" type="color" onchange="chooseColor()" id="myColor"> 
+  </fieldset>
+
+  <div id="editor" contenteditable="true"></div>
+  
+</div>
+
+</body>
+</html>

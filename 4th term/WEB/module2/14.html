@@ -1,0 +1,84 @@
+<head>
+	<script>
+  function setText(){
+    var content = document.querySelector('.tableText');
+    var insertedContent = document.querySelector('.insertedTableText');
+		var rows = form1.rows.value;
+		var columns = form1.columns.value;
+    
+    var input = "Enter values";
+		for (var i = 0; i < rows; i++) {
+      for (var j = 0; j < columns; j++) {
+        input += "<div>(" + i + "," + j + ") : <input type = 'text' value='text["+i+";"+j+"]' class = 'text'></div>";
+      }
+    }
+		content.innerHTML = input;
+    
+    input = "<div>Inserted values</div>";
+    for (var j = 0; j < columns; j++) {
+        input += "<div><input type = 'text' value='text' class = 'text'></div>";
+     }
+    insertedContent.innerHTML = input;
+  }  
+   
+  function insert(){
+    var content = document.querySelector('.tableText');
+    var insertedContent = document.querySelector('.insertedTableText');
+		var rows = form1.rows.value;
+		var columns = form1.columns.value;
+    
+    var input = "";
+    for (var i = 0; i < rows; i++) {
+      for (var j = 0; j < columns; j++) {
+        input += "<div>(" + i + "," + j + ") : <input type = 'text' value='"+content.children[i*(columns)+j].children[0].value+"' class = 'text'></div>";
+      }
+    }
+    
+    for (var i = 0; i < columns; i++) {
+      input += "<div>(" + rows + "," + i + ") : <input type = 'text' value='"+insertedContent.children[i].children[0].value+"' class = 'text'></div>";
+    }
+    content.innerHtml = input;
+    
+    form1.rows.value = parseInt(form1.rows.value) + 1;
+  }  
+    
+	function create() {
+		var tableText = document.querySelector('.tableText');
+		var content = document.querySelector('.content');
+    
+		var rows = form1.rows.value;
+		var columns = form1.columns.value;
+    
+    var table = document.createElement("table");
+    var tableBody = document.createElement("tbody");
+
+  for (var i = 0; i < rows; i++) {
+    var row = document.createElement("tr");
+    for (var j = 0; j < columns; j++) {
+      var td = document.createElement("td");
+      var tdText = document.createTextNode(tableText.children[i*(columns)+j].children[0].value);
+      td.appendChild(tdText);
+      row.appendChild(td);
+    }
+    tableBody.appendChild(row);
+  }
+
+  table.appendChild(tableBody);
+  content.appendChild(table);
+  table.setAttribute("border", "2");
+	}
+	</script>
+</head>
+
+<body>
+	<form name = "form1">
+      <div>Number of rows: <input type = "text" value="0" id = "rows" oninput = "setText()"></div>
+			<div>Number of columns: <input type = "text" value="0" id = "columns" oninput = "setText()"></div>
+			<input type = "button" value = "Create table" onclick = "create()">
+	</form>
+      <div class = "tableText"></div>
+      <div class = "insertedTableText"></div>
+    
+      <input type = "button" value = "Insert row" onclick = "insert()">
+			<div class = "content"></div>
+</body> 

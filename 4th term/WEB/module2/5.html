@@ -1,0 +1,57 @@
+<script>
+  var currentSlide = 0;
+startSlides();
+
+function changeSlide(n) {
+  showSlide(currentSlide += n);
+}
+
+function startSlides(){
+  showSlide(currentSlide+=1);
+  setTimeout(startSlides, 5000); 
+}
+
+function showSlide(n) {
+  var i;
+  var slides = document.getElementsByClassName("slides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {currentSlide = 1}
+  if (n < 1) {currentSlide = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[currentSlide-1].style.display = "block";
+  dots[currentSlide-1].className += " active";
+} 
+</script>
+
+<div class="slideshow-container">
+
+<p>Image changes every 5 seconds</p>
+  <div class="slides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-versailles-gardens.jpg" style="width:50%">
+  </div>
+
+  <div class="slides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-mont-st-michel.jpg" style="width:50%">
+  </div>
+
+  <div class="slides fade"><div class="numbertext">3 / 3</div>
+    <img src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" style="width:50%">
+  </div>
+
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="showSlide(1)"></span>
+  <span class="dot" onclick="showSlide(2)"></span>
+  <span class="dot" onclick="showSlide(3)"></span>
+</div>

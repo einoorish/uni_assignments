@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<style>
+.column {
+	height: 200px;
+	display: inline-block;
+	background-color: #0099cc;
+	margin: 5px;
+}
+div{
+  padding: 10px;
+}
+</style>
+
+
+<head>
+	<script>
+	function change() {
+		var content = document.querySelector('.content');
+		var n = form1.amount.value;
+		var input = "Enter values";
+		for (var i = 0; i < n; i++) {
+			input += "<div>" + i + " : <input type = 'text' value='0' class = 'diagram_h'></div>";
+		}
+		content.innerHTML = input;
+	}
+	function create() {
+		var content = document.querySelector('.content');
+		var dia = document.querySelector('.diagram');
+		var n = form1.amount.value;
+		var max_h = 0;
+		var input = "";	
+		for (var i = 0; i < n; i++) {
+			var temp_h = content.children[i].children[0].value;
+			if (parseInt(temp_h) > parseInt(max_h)) {
+				max_h = temp_h;
+			}	
+			input += "<li class='column'>" + i + "</li>";
+		}
+		dia.innerHTML = input;
+		for (var i = 0; i < n; i++) {	
+			var temp_h = content.children[i].children[0].value;
+			dia.children[i].style.height = (temp_h * 200) / max_h+ "px";
+		}	
+	}
+	</script>
+</head>
+
+<body>
+	<form name = "form1">
+			<div>
+				Number of columns: <input type = "text" value="0" id = "amount" oninput = "change()">
+			</div>
+				<input type = "button" value = "Create diagram" onclick = "create()">
+			<div class = "content">
+			</div>
+		</div>
+	</form>
+	<div>
+		Result <br><ul class="diagram"></ul>
+  </div>
+</body> 

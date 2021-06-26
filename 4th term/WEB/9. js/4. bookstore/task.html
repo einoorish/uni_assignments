@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	<form>
+		<p>Замовлення на придбання товару</p>
+		<div>
+	    	<label>Назва товару</label>
+	    	<select id="select">
+            <option>Гаррі Поттер - 20.5</option>
+            <option>Колгосп тварин - 20</option>
+            <option>1984 - 30</option>
+            <option>Автостопом по галактиці - 20</option>
+            <option>Вінні-Пух - 10</option>
+	    	</select>
+    </div>
+    <div>
+        <label>Кількість: </label>
+        <input type="number" id="amount" required placeholder="0" min="1">
+        <label>Вартість: </label>
+        <input type="number" id="cost">
+    </div>
+	  		<p>Спосіб доставки замовлення</p>
+				<input type="radio" name="delivery" id="post" value="option1" checked><label>Поштою</label>
+		    <br>
+			  <input type="radio" name="delivery" id="home" value="option2"><label>Доставка до дому</label>
+        <br>
+  			<input type="checkbox" value="" id="special-package"><label>У святковій упаковці</label>
+	  	</div>
+	  	<div>
+	  		<div align=right>
+		  		<label>Загальна вартість замовлення</label>
+	      		<input type="number" id="total">
+	      		<input type="button" id="calculateTotal" onclick="calcTotal()" value="Підрахувати"/>
+      		</div>
+  		</div>
+  		<div>Спосіб доставки замовлення</div>
+  		<div>
+    		<div>
+      			<label>Ім'я</label>
+      			<input type="text" id="name" required>
+      			<label>Адреса</label>
+      			<input type="text" id="address" required>
+    		</div>
+  		</div>
+  		<div align=right>
+	  		<input type="button" onclick="reset()" value="Відновити початкові значення полів"/>
+	  		<input type="button" onclick="send()" value="Відіслати дані"/>
+  		</div>
+	</form>
+	<div id="table"></div>
+  
+	<script>
+		let names = ["Гаррі Поттер", "Колгосп тварин", "1984", "Автостопом по галактиці", "Вінні-пух"];
+		let amounts = [0,0,0,0,0];
+		let costs = [20.5, 20, 30, 20, 10];
+
+		function updateCost(){
+			let cur = Number.parseInt(document.getElementById("amount").value) * costs[document.getElementById("select").selectedIndex];
+			if(document.getElementById("post").checked) {
+				cur*=1.05;
+			}else if(document.getElementById("home").checked) {
+				cur*=1.15;
+			}
+			if(document.getElementById("special-package").checked) {
+				cur*=1.1;
+			}
+			document.getElementById("cost").value =cur.toFixed(2);
+		}
+
+		function calcTotal(){
+			let total = 0;
+			for(let i = 0; i< 5; i++){
+				total += costs[i] * amounts[i];
+			}
+			if(document.getElementById("post").checked) {
+				total*=1.05;
+			}	else if(document.getElementById("home").checked) {
+				total*=1.15;
+			}
+			if(document.getElementById("special-package").checked) {
+				total*=1.1;
+			}
+			document.getElementById("total").value = total.toFixed(2);
+		}
+
+		document.getElementById("select").onchange = function(){
+			document.getElementById("amount").value = "0";
+			document.getElementById("cost").value = "0";
+    }
+      
+		document.getElementById("amount").onchange = function(){
+      amounts[document.getElementById("select").selectedIndex] = Number.parseInt(document.getElementById("amount").value);
+			updateCost();
+		}
+
+		function addBookToTable(id){
+			let list = document.getElementById("table");
+			let holder_div = document.createElement("div");
+			let name_div = document.createElement("div");
+			name_div.innerHTML = "Book: " + names[id];
+			holder_div.appendChild(name_div);
+
+			let amount_div = document.createElement("div");
+			amount_div.innerHTML = "Amount: " + amounts[id];
+			holder_div.appendChild(amount_div);
+
+			let cost_div = document.createElement("div");
+			let cur = amounts[id] * costs[id];
+			if(document.getElementById("post").checked) {
+				cur*=1.05;
+			}	else if(document.getElementById("home").checked) {
+				cur*=1.15;
+			}
+			if(document.getElementById("special-package").checked) {
+				cur*=1.1;
+			}
+			cost_div.innerHTML = "Cost: " + Math.round(cur);
+			holder_div.appendChild(cost_div);
+      
+			let delimiter = document.createElement("div");
+      delimiter.innerHTML = "---------------------------";
+			holder_div.appendChild(delimiter);
+
+		  list.appendChild(holder_div);
+		}
+
+		function send(){
+			if(document.getElementById("name").value == "" || document.getElementById("address").value == ""){
+				alert("Не всі поля заповнені");
+			}
+			else{
+				for(let i = 0; i<5; i++){
+					if( amounts[i] == 0) continue;
+					addBookToTable(i);
+				}
+			}
+		}
+    
+		function reset(){
+			amounts = [0,0,0,0,0];
+			document.getElementById("post").checked = true;
+			document.getElementById("special-package").checked = false;
+			document.getElementById("cost").value = "0";
+			document.getElementById("select").selectedIndex = 0;
+			document.getElementById("amount").value = "0";
+			document.getElementById("name").value = "";
+			document.getElementById("address").value = "";
+			let elements = document.getElementsByClassName("books");
+			while (elements[0]) {
+		    	elements[0].parentNode.removeChild(elements[0]);
+			}
+		}
+	</script>
+</body>
+</html>

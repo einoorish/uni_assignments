@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<script>	
+		function add(){
+
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			
+			var s = a + b;
+			var p = document.createElement('p');
+			p.innerHTML = "Sum: " + s;
+			c.appendChild(p);
+		}
+		
+    function sub(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			var s = a-b;
+			var p = document.createElement('p');
+			p.innerHTML = "Sub: " + s;
+			c.appendChild(p);
+		}
+    
+    function mult(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			var s = a*b;
+			var p = document.createElement('p');
+			p.innerHTML = "Mult: " + s;
+			c.appendChild(p);
+		}
+    
+    function div(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			var s = a/b;
+			var p = document.createElement('p');
+			p.innerHTML = "Div: " + s;
+			c.appendChild(p);
+		}
+    
+    function mod(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			var s = a%b;
+			var p = document.createElement('p');
+			p.innerHTML = "Mod: " + s;
+			c.appendChild(p);
+		}
+    
+    function sqrt(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var s = Math.sqrt(a);
+			var p = document.createElement('p');
+			p.innerHTML = "Sqrt: " + s;
+			c.appendChild(p);
+		}
+    
+    function pow(){
+			var c = document.getElementById('container')
+
+			var a = parseInt(document.getElementById('a_input').value);
+			var b = parseInt(document.getElementById('b_input').value);
+			var s = Math.pow(a,b);
+			var p = document.createElement('p');
+			p.innerHTML = "Pow: " + s;
+			c.appendChild(p);
+		}
+	</script>
+</head>
+<body>
+  <h5>Enter numbers and click on operation</h5>
+  <div id="container">
+    <input type="number"  id="a_input" ><br>
+    <div onclick="add()">+</div>
+    <div onclick="sub()">-</div>
+    <div onclick="mult()">*</div>
+    <div onclick="div()">/</div>
+    <div onclick="mod()">%</div>
+    <div onclick="sqrt()"> √ </div>
+    <div onclick="pow()">^<div>
+    <input type="number" id="b_input">
+  </div>
+</body>
+</html>

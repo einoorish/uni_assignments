@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+	<style>
+
+		#label1{
+			bottom: 0px;
+			margin-left: 20%;
+      display: inline-block;
+		}
+
+		#label2{
+			bottom: 0px;
+			margin-left: 30%;
+      display: inline-block;
+		}
+
+		#label3{
+			bottom: 0px;
+			margin-left: 40%;
+      display: inline-block;
+		}
+
+		#label4{
+			bottom: 0px;
+			margin-left: 50%;
+      display: inline-block;
+		}
+
+		#label5{
+			bottom: 0px;
+			margin-left: 60%;
+      display: inline-block;
+		}
+
+		.radio:hover {
+			color: #EDAE49;
+		}
+
+		.page{
+			visibility: hidden;
+			width: 100%;
+		}
+
+		#page1, #page2, #page3, #page4, #page5{
+			box-sizing: border-box;
+		}
+
+		#page2, #page3, #page4, #page5{
+			margin-left: -100%;
+		}
+
+		#toggle1:checked ~ #page1 {
+		   visibility: visible;
+		}
+
+		#toggle1:checked ~ #label1 {
+		   font-size: 18px;
+		   color: red;
+		}
+
+		#toggle2:checked ~ #page2 {
+		   visibility: visible;
+		}
+
+		#toggle2:checked ~ #label2 {
+		   font-size: 18px;
+		   color: red;
+		}
+
+		#toggle3:checked ~ #page3 {
+		   visibility: visible;
+		}
+
+		#toggle3:checked ~ #label3 {
+		   font-size: 18px;
+		   color: red;
+		}
+
+		#toggle4:checked ~ #page4 {
+		   visibility: visible;
+		}
+
+		#toggle4:checked ~ #label4 {
+		   font-size: 18px;
+		   color: red;
+		}
+
+		#toggle5:checked ~ #page5 {
+		   visibility: visible;
+		}
+
+		#toggle5:checked ~ #label5 {
+		   font-size: 18px;
+		   color: red;
+		}
+
+		.flag{
+			height: 32px;
+			width: 32px;
+		}
+	</style>
+</head>
+<body>
+	<article id="trips" class="position-relative container-fluid d-flex w-100 p-5">
+		<input type="radio" id="toggle1" checked="checked" name="pages">
+		<label id="label1" class="position-absolute" for="toggle1">UKRAINE</label>
+		<input type="radio" id="toggle2" name="pages">
+		<label id="label2" class="position-absolute" for="toggle2">GERMANY</label>
+		<input type="radio" id="toggle3" name="pages">
+		<label id="label3" class="position-absolute" for="toggle3">SPAIN</label>
+		<input type="radio" id="toggle4" name="pages">
+		<label id="label4" class="position-absolute" for="toggle4">FRANCE</label>
+		<input type="radio" id="toggle5" name="pages">
+		<label id="label5" class="position-absolute" for="toggle5">ENGLAND</label>
+    
+<div id="page1" class="d-block row min-h-100 page">
+        <img src="https://v1.iconsearch.ru/uploads/icons/finalflags/128x128/ukraine-flag.png" class="flag d-inline-block pb-2" >
+        <h3 class="d-inline-block">Ukraine</h3>	
+			<div>
+				<h5>1. St. Sophia's Cathedral</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/80-391-0151_Kyiv_St.Sophia%27s_Cathedral_RB_18_2_%28cropped%29.jpg/420px-80-391-0151_Kyiv_St.Sophia%27s_Cathedral_RB_18_2_%28cropped%29.jpg" class="col-4">
+				<p class="m-3"><b> Price: 100 uah</b></p>
+				<p class="m-3">
+				Saint Sophia Cathedral in Kyiv, Ukraine, is an architectural monument of Kyivan Rus. The cathedral is one of the city's best known landmarks and the first heritage site in Ukraine to be inscribed on the World Heritage List along with the Kyiv Cave Monastery complex. Aside from its main building, the cathedral includes an ensemble of supporting structures such as a bell tower and the House of Metropolitan. In 2011 the historic site was reassigned from the jurisdiction of the Ministry of Regional Development of Ukraine to the Ministry of Culture of Ukraine. One of the reasons for the move was that both Saint Sophia Cathedral and Kyiv Pechersk Lavra are recognized by the UNESCO World Heritage Program as one complex, while in Ukraine the two were governed by different government entities. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="UKRAINE-1"></input>
+      <h5>2. Old City of Lviv</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Lw%C3%B3w_-_Widok_z_wie%C5%BCy_ratuszowej_01.jpg/1920px-Lw%C3%B3w_-_Widok_z_wie%C5%BCy_ratuszowej_01.jpg" class="col-4">
+				<p class="m-3"><b> Price: 200 uah</b></p>
+				<p class="m-3">
+				Lviv's Old Town (Ukrainian: Старе Місто Львова, romanized: Stare Misto L’vova; Polish: Stare Miasto we Lwowie) is the historic centre of the city of Lviv, within the Lviv Oblast (province) in Ukraine, recognized as a State Historic-Architectural Sanctuary in 1975. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="UKRAINE-2"></input>
+    </div>
+    <h5>3. Kiev-Pechersk Lavra Complex</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/%D0%9B%D0%B0%D0%B2%D1%80%D0%B0.jpg/1920px-%D0%9B%D0%B0%D0%B2%D1%80%D0%B0.jpg" class="col-4">
+				<p class="m-3"><b> Price: 150 uah</b></p>
+				<p class="m-3">
+				Since its foundation as the cave monastery in 1051, the Lavra has been a preeminent center of Eastern Orthodox Christianity in Eastern Europe. Together with the Saint Sophia Cathedral, it is inscribed as a UNESCO World Heritage Site. The monastery complex is considered a separate national historic-cultural preserve (sanctuary), the national status to which was granted on 13 March 1996. The Lavra is not only located in another part of the city, but is part of a different national sanctuary than Saint Sophia Cathedral. While being a cultural attraction, the monastery is once again active, with over 100 monks in residence.[citation needed] It was named one of the Seven Wonders of Ukraine on 21 August 2007, based on voting by experts and the internet community.
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="UKRAINE-3"></input>
+      </div>
+<div id="page2" class="d-block row min-h-100 page">
+        <img src="https://v1.iconsearch.ru/uploads/icons/finalflags/128x128/germany-flag.png" class="flag d-inline-block pb-2" >
+        <h3 class="d-inline-block">Germany</h3>	
+			<div>
+				<h5>1. Bavarian Forest National Park</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bayerischer_wald_intakt.jpg/426px-Bayerischer_wald_intakt.jpg" class="col-4">
+				<p class="m-3"><b> Price: 100 uah</b></p>
+				<p class="m-3">
+				The Bavarian Forest National Park (German: Nationalpark Bayerischer Wald) is a national park in the Eastern Bavarian Forest immediately on Germany's border with the Czech Republic. It was founded on 7 October 1970 as the first national park in Germany. Since its expansion on 1 August 1997 it has covered an area of 24,250 hectares. Together with the neighbouring Czech Bohemian Forest the Bavarian Forest forms the largest contiguous area of forest in Central Europe. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="GERMANY-1"></input>
+      <h5>2. Saxon Switzerland National Park</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lilienstein_Saxon_Switzerland.jpg/426px-Lilienstein_Saxon_Switzerland.jpg" class="col-4">
+				<p class="m-3"><b> Price: 200 uah</b></p>
+				<p class="m-3">
+          (German: Nationalpark Sächsische Schweiz), is a National Park in the German Free State of Saxony, near the Saxon capital Dresden. It covers two areas of 93.5 km² (36.1 mi²) in the heart of the German part of the Elbe Sandstone Mountains, which is often called (the) Saxon Switzerland (German: Sächsische Schweiz). 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="GERMANY-2"></input>
+    </div>
+    <h5>3. Western Pomerania Lagoon Area National Park</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/NP_Vorp._Boddenlandschaft.JPG/426px-NP_Vorp._Boddenlandschaft.JPG" class="col-4">
+				<p class="m-3"><b> Price: 150 uah</b></p>
+				<p class="m-3">
+				The Western Pomerania Lagoon Area National Park[1] (Nationalpark Vorpommersche Boddenlandschaft) is Mecklenburg-Vorpommern's largest national park, situated at the coast of the Baltic Sea. It consists of several peninsulas, islands and lagoon shore areas in the Baltic Sea, belonging to the district of Vorpommern-Rügen.
+
+The national park includes:
+
+    the Darß peninsula, 
+    the western coast of the island of Rügen, 
+    the island of Hiddensee, 
+    the island of Ummanz, 
+    several tiny islets between the above places, 
+    the multiple lagoons in between the land masses. 
+
+The national park is characterised by very shallow water housing a unique coastal fauna. All portions of the national park are famous for being a resting place for tens of thousands of cranes and geese.
+
+Its area is 805 km². 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="GERMANY-3"></input>
+      </div>
+<div id="page3" class="d-block row min-h-100 page">
+        <img src="https://v1.iconsearch.ru/uploads/icons/finalflags/128x128/spain-flag.png" class="flag d-inline-block pb-2" >
+        <h3 class="d-inline-block">Spain</h3>	
+			<div>
+				<h5>1. San Lorenzo de El Escorial</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Vista_aerea_del_Monasterio_de_El_Escorial.jpg/416px-Vista_aerea_del_Monasterio_de_El_Escorial.jpg" class="col-4">
+				<p class="m-3"><b> Price: 100 uah</b></p>
+				<p class="m-3">El Escorial, or the Royal Site of San Lorenzo de El Escorial (Spanish: Monasterio y Sitio de El Escorial en Madrid), or Monasterio del Escorial (Spanish pronunciation: [el eskoˈɾjal]), is a historical residence of the King of Spain located in the town of San Lorenzo de El Escorial about 45 kilometres (28 miles) northwest of the Spanish capital Madrid. It is one of the Spanish royal sites and functions as a monastery, basilica, royal palace, pantheon, library, museum, university, school and hospital. It is situated 2.06 km (1.28 mi) up the valley (4.1 km [2.5 mi] road distance) from the town of El Escorial. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="SPAIN-1"></input>
+      <h5>2. Sagrada Família</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/%CE%A3%CE%B1%CE%B3%CF%81%CE%AC%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%AF%CE%BB%CE%B9%CE%B1_2941.jpg/266px-%CE%A3%CE%B1%CE%B3%CF%81%CE%AC%CE%B4%CE%B1_%CE%A6%CE%B1%CE%BC%CE%AF%CE%BB%CE%B9%CE%B1_2941.jpg" class="col-4">
+				<p class="m-3"><b> Price: 200 uah</b></p>
+				<p class="m-3">The Basílica de la Sagrada Família (Catalan: [bəˈzilikə ðə lə səˈɣɾaðə fəˈmiljə]; Spanish: Basílica de la Sagrada Familia; 'Basilica of the Holy Family'), also known as the Sagrada Família, is a large unfinished Roman Catholic minor basilica in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Spanish architect Antoni Gaudí (1852–1926), his work on the building is part of a UNESCO World Heritage Site. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a minor basilica.[
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="SPAIN-2"></input>
+    </div>
+    <h5>3. Basilica of Saint Joseph Oriol</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Bas%C3%ADlica_de_Sant_Josep_Oriol.jpg/330px-Bas%C3%ADlica_de_Sant_Josep_Oriol.jpg" class="col-4">
+				<p class="m-3"><b> Price: 150 uah</b></p>
+				<p class="m-3">Construction of the church began in 1915, under the architect Enric Sagnier.[1] The church was officially opened in 1926 although the works of the clock tower and facade were not completed until 1930. On 15 May 1936 it received the title of minor basilica granted by Pope Pius XI. It was the fifth church of Barcelona to receive this title.
+
+The church was burned in July 1936, and was rebuilt after the end of the Spanish Civil War. The reconstruction of the temple was slow, taking about 12 years. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="SPAIN-3"></input>
+</div>
+<div id="page4" class="d-block row min-h-100 page">
+        <img src="https://v1.iconsearch.ru/uploads/icons/finalflags/128x128/france-flag.png" class="flag d-inline-block pb-2" >
+        <h3 class="d-inline-block">France</h3>	
+			<div>
+				<h5>1. Palace of Versailles</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081.jpg/420px-Vue_a%C3%A9rienne_du_domaine_de_Versailles_par_ToucanWings_-_Creative_Commons_By_Sa_3.0_-_081.jpg" class="col-4">
+				<p class="m-3"><b> Price: 100 uah</b></p>
+				<p class="m-3">A simple hunting lodge and later a small château with a moat occupied the site until 1661, when the first work expanding the château into a palace was carried out for Louis XIV. In 1682, when the palace had become large enough, the king moved the entire royal court and the French government to Versailles. Some of the palace furniture at this time was constructed of solid silver, but in 1689 much of it was melted down to pay for the cost of war. Subsequent rulers mostly carried out interior remodeling, to meet the demands of changing taste, although Louis XV did install an opera house at the north end of the north wing for the wedding of the Dauphin and Marie Antoinette in 1770. The palace has also been a site of historical importance. The Peace of Paris (1783) was signed at Versailles, the Proclamation of the German Empire occurred in the vaunted Hall of Mirrors, and World War I was ended in the palace with the Treaty of Versailles, among many other events. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="FRANCE-1"></input>
+      <h5>2. Mont Saint-Michel</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mont-Saint-Michel_vu_du_ciel.jpg/420px-Mont-Saint-Michel_vu_du_ciel.jpg" class="col-4">
+				<p class="m-3"><b> Price: 200 uah</b></p>
+				<p class="m-3">Le Mont-Saint-Michel (French pronunciation: ​[lə mɔ̃ sɛ̃ miʃɛl]; Norman: Mont Saint Miché, English: Saint Michael's Mount) is a tidal island and mainland commune in Normandy, France.
+
+The island lies approximately one kilometre (0.6 miles) off the country's north-western coast, at the mouth of the Couesnon River near Avranches and is 7 hectares (17 acres) in area. The mainland part of the commune is 393 hectares (971 acres) in area so that the total surface of the commune is 400 hectares (988 acres).
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="FRANCE-2"></input>
+    </div>
+    <h5>3. Scandola Nature Reserve</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Osani_marine_d%27Elbo.jpg/420px-Osani_marine_d%27Elbo.jpg" class="col-4">
+				<p class="m-3"><b> Price: 150 uah</b></p>
+				<p class="m-3">The Scandola Nature Reserve is located on the west coast of the French island of Corsica, within the Corsica Regional Park. The reserve was established in 1975. The park and reserve has been recognized by the United Nations as a Natural World Heritage Site, and was inscribed on the World Heritage List in 1983. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="FRANCE-3"></input>
+</div>
+<div id="page5" class="d-block row min-h-100 page">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/383px-Flag_of_the_United_Kingdom.svg.png" class="flag d-inline-block pb-2" >
+        <h3 class="d-inline-block">England</h3>	
+			<div>
+				<h5>1. St Paul's Cathedral</h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/St_Pauls_aerial_%28cropped%29.jpg/330px-St_Pauls_aerial_%28cropped%29.jpg" class="col-4">
+				<p class="m-3"><b> Price: 100 uah</b></p>
+				<p class="m-3">St Paul's Cathedral is an Anglican cathedral in London, United Kingdom, which, as the cathedral of the Bishop of London, serves as the mother church of the Diocese of London. It sits on Ludgate Hill at the highest point of the City of London and is a Grade I listed building. Its dedication to Paul the Apostle dates back to the original church on this site, founded in AD 604. The present cathedral, dating from the late 17th century, was designed in the English Baroque style by Sir Christopher Wren. Its construction, completed in Wren's lifetime, was part of a major rebuilding programme in the City after the Great Fire of London. The earlier Gothic cathedral (Old St Paul's Cathedral), largely destroyed in the Great Fire, was a central focus for medieval and early modern London, including Paul's walk and St Paul's Churchyard being the site of St Paul's Cross. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="ENGLAND-1"></input>
+      <h5>2. London Eye </h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/London-Eye-2009.JPG/360px-London-Eye-2009.JPG" class="col-4">
+				<p class="m-3"><b> Price: 200 uah</b></p>
+				<p class="m-3">The London Eye, or the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the River Thames in London. It is Europe's tallest cantilevered observation wheel, and is the most popular paid tourist attraction in the United Kingdom with over 3 million visitors annually.It has made many appearances in popular culture. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="ENGLAND-2"></input>
+    </div>
+    <h5>3. Royal Crescent </h5>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Royal.crescent.aerial.bath.arp.jpg/330px-Royal.crescent.aerial.bath.arp.jpg" class="col-4">
+				<p class="m-3"><b> Price: 150 uah</b></p>
+				<p class="m-3">
+          The Royal Crescent is a row of 30 terraced houses laid out in a sweeping crescent in the city of Bath, England. Designed by the architect John Wood, the Younger and built between 1767 and 1774, it is among the greatest examples of Georgian architecture to be found in the United Kingdom and is a Grade I listed building. Although some changes have been made to the various interiors over the years, the Georgian stone facade remains much as it was when first built. 
+				</p>
+        <label class="m-3">Add to tour</label>
+        <input type="checkbox" id="ENGLAND-3"></input>
+</div>
+	</article>
+	<button type="button" class="btn btn-primary m-5" id="calculate">Сalculate total cost</button>
+	<script>
+		document.getElementById('calculate').onclick = function (){
+			let sum = 0;
+			if(document.getElementById('UKRAINE-1').checked){
+				sum+=100;
+			}
+			if(document.getElementById('UKRAINE-2').checked){
+				sum+=200;
+			}
+			if(document.getElementById('UKRAINE-3').checked){
+				sum+=150;
+			}
+			if(document.getElementById('GERMANY-1').checked){
+				sum+=100;
+			}
+			if(document.getElementById('GERMANY-2').checked){
+				sum+=200;
+			}
+			if(document.getElementById('GERMANY-3').checked){
+				sum+=150;
+			}
+			if(document.getElementById('SPAIN-1').checked){
+				sum+=100;
+			}
+			if(document.getElementById('SPAIN-2').checked){
+				sum+=200;
+			}
+			if(document.getElementById('SPAIN-3').checked){
+				sum+=150;
+			}
+			if(document.getElementById('FRANCE-1').checked){
+				sum+=100;
+			}
+			if(document.getElementById('FRANCE-2').checked){
+				sum+=200;
+			}
+			if(document.getElementById('FRANCE-3').checked){
+				sum+=150;
+			}
+			if(document.getElementById('ENGLAND-1').checked){
+				sum+=100;
+			}
+			if(document.getElementById('ENGLAND-2').checked){
+				sum+=200;
+			}
+			if(document.getElementById('ENGLAND-3').checked){
+				sum+=150;
+			}
+			alert(sum);
+		}
+	</script>
+</body>
+</html>

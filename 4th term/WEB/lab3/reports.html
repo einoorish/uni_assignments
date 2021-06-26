@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: PT Sans;
+  font-size:14px;
+  background: #e5e8d8;
+}
+
+.header {
+  padding: 30px;
+  align: left;
+  background: #fcfff0;
+  display: flex;
+}
+
+.header h1 {
+  color: #fab73d;
+  font-size: 30px;
+}
+  
+.topnav {
+  overflow: hidden;
+  background-color: #fab73d;
+}
+
+.topnav a {
+  display: inline-block;
+  color: #4a4a4c;
+  padding: 14px 26px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  text-decoration: underline;
+}
+
+.leftcolumn {   
+  background-color: white;
+  color:#2b331f;
+  padding: 20px;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.rightcolumn {
+  padding: 20px;
+  margin-top: 20px;
+  flex: 3;
+}
+
+.row{
+  display: flex;
+  padding-left:15%;
+  padding-right:15%;
+}
+  
+@media screen and (max-width: 1400px){
+    .row{
+  padding-left:7%;
+  padding-right:7%;
+    }
+  } 
+  
+@media screen and (max-width: 700px){
+    .row{
+  padding-left:15%;
+  padding-right:15%;
+      flex-direction:column;
+   }
+  }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+.phones {
+  font-size:20px;
+  font-style: oblique;
+}
+
+.logo {
+  height:60px;
+  width:60px;
+  margin:10px; 
+  margin-top:20px;
+  object-fit: scale-down;
+}
+
+.logo img {
+  height:60px; 
+  width:60px;
+  object-fit: scale-down;
+}
+
+.crop {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.crop img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+  
+.footer {
+  color: #4a4a4c;
+  padding: 20px;
+  background: #fab73d;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: [full-start] minmax(0, 1fr) [main-start] minmax(0, 1fr) [main-end] minmax(0, 1fr) [full-end];
+
+}
+.footer ul {
+   margin:0px ; 
+   list-style-type:none ; 
+}
+.footer ul li{
+  text-align: left;
+  padding:0px 0px 5px 0px;
+}
+.footer a, p{
+  color: #4a4a4c;
+  font-size:smaller;
+}
+
+</style>
+
+    <script src='https://cdn.plot.ly/plotly-1.58.4.min.js'></script>
+    <script>
+      window.addEventListener('load', function() {
+        var x = ["2018р","2019р", "2020р", "2021р"]
+        var y = ["80","30","10","50"]
+
+        var data = [
+          {
+            histfunc: "sum",
+            y: y,
+            x: x,
+            type: "histogram",
+            name: "count"
+          },
+        ]
+        var layout = {
+          title: "Збрані кошти", 
+          xaxis: {title: "Рік"}, 
+          yaxis: {title: "(тис.)"}
+        };
+        Plotly.newPlot('histogr', data, layout)  
+        
+        
+        var data = [{
+        values: [9, 36, 55],
+        labels: ['Персонал', 'Постраждалі від воєнних дій', 'Обладнання дитячих лікарень'],
+        type: 'pie'
+      }];
+
+      var layout = {
+          title: "Витрати", 
+      };
+
+      Plotly.newPlot('pieChart', data, layout);
+
+        
+      })
+  </script>
+</head>
+<body>
+<div class="header">
+  
+  <div class="logo"><img src="logo.png" alt="logo"></div>
+  <div style="flex-grow: 4;">
+    <h1>Добросердість</h1>
+    <p>Благодійний Фонд</p>
+  </div>
+  <div class="phones">
+    <p>+380333333333</p>
+    <p>+380222222222</p>
+  </div>
+  
+</div>
+
+<div class="topnav"  align="center">
+  <a href="index.html">Допомогти зараз</a>
+  <a href="index.html">Проекти</a>
+  <a href="reports.html">Ми вже допомогли</a>
+  <a href="reports.html">Звіти</a>
+  <a href="index.html">Про нас</a>
+</div>
+  
+  <div id="histogr"></div>
+  <div id="pieChart"></div>
+
+<div class="footer">
+
+  <div>
+    <p>© Copyright 2021. All Rights Reserved. </p>
+  </div>
+  
+  <div>
+    <ul>
+      <li><a href="index.html">Допомогти зараз</a></li>
+      <li><a href="index.html">Проекти</a></li>
+      <li><a href="reports.html">Ми вже допомогли</a></li>
+      <li><a class="nav-link" href="reports.html">Звіти</a></li>
+      <li><a class="nav-link" href="index.html">Про нас</a></li>
+    </ul>
+  </div>
+
+  
+  <div>
+    <p>Адреса: вулиця Велика Васильківська, 40, Київ</p>
+    <p>E-mail: _placeholder_@gmail.com</p>
+  </div>
+  
+</div>
+
+</body>
+</html>

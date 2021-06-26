@@ -1,0 +1,34 @@
+<script>
+  var check = function() {
+    var btn = document.getElementById("submit");
+  if (document.getElementById('psw').value ==
+    document.getElementById('psw-repeat').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    btn.disabled = false;
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    btn.disabled = true;
+  }
+}
+</script>
+
+<form>
+  <div class="container">
+    <h1>Register</h1>
+    <hr>
+    <label><b>Email</b></label>
+    <input type="email" name="email" id="email" required type="email"> <br><br>
+    <label><b>B-Day </b></label>
+    <input type="date" id="start" name="trip-start" min="1900-01-01" max="2021-26-05">
+    <br><br>
+    <label><b>Password</b></label>
+    <input type="password" name="psw" id="psw" required onkeyup='check();'> <br><br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" name="psw-repeat" id="psw-repeat" required  type="password" onkeyup='check();'>
+    <span id='message'></span>
+    <hr>
+<input type="submit" id="submit"  value="Submit"  disabled="false" />
+</form> 

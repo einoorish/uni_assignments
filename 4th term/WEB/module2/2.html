@@ -1,0 +1,139 @@
+<style>
+.nav a {
+text-decoration: none;
+display: block;
+margin: 0;
+padding: 0;
+}
+  
+.nav_horizontal a {
+text-decoration: none;
+display: inline-block;
+margin: 0;
+padding: 0;
+}
+  
+.nav ul {
+list-style: none;
+}
+.topmenu > li {
+display: block;
+position: relative;
+width: 200px;
+}
+.topmenu_horizontal > li {
+display: inline-block;
+position: relative;
+width: 200px;
+}   
+.topmenu > li > a {
+padding: 10px 30px;
+color: black;
+border: 1px solid black;
+}
+.submenu {
+position: absolute;
+left: 10px;
+z-index: 5;
+width: 240px;
+visibility: hidden;
+opacity: 0;
+transform: translateY(10px);
+}
+.submenu li {
+position: relative;
+border: 1px solid black;
+margin:2px;
+}
+.submenu a {
+background: white;
+color: black;
+text-align: center;
+padding: 10px 20px;
+}
+.submenu .submenu {
+position: absolute;
+top: 0;
+left: 200px;
+
+}
+.nav li:hover > .submenu {
+visibility: visible;
+opacity: 1;
+transform: translateY(0px);
+}
+</style>
+
+<div class="nav">
+<ul class="topmenu">
+<li><a href="">Meny1</a>
+<ul class="submenu">
+<li><a href="">Meny 1-2</a>
+<ul class="submenu">
+<li><a href="">Meny 1-2-1</a></li>
+<li><a href="">Meny 1-2-2</a></li>
+</ul>
+</li>
+<li><a href="">Meny 1-3</a>
+<ul class="submenu">
+<li><a href="">Meny 1-3-1</a></li>
+<li><a href="">Meny 1-3-2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="">Meny 2</a>
+<ul class="submenu">
+<li><a href="">Meny 2-1</a>
+<ul class="submenu">
+<li><a href="">Meny 2-1-1</a></li>
+<li><a href="">Meny 2-1-2</a></li>
+</ul>
+</li>
+<li><a href="">Meny 2-2</a>
+<ul class="submenu">
+<li><a href="">Meny 2-2-1</a></li>
+<li><a href="">Meny 2-2-2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="nav nav_horizontal">
+<ul class="topmenu topmenu_horizontal">
+<li><a href="">Menu1</a>
+<ul class="submenu">
+<li><a href="">Menu 1.2</a>
+<ul class="submenu">
+<li><a href="">Menu 1.2.1</a></li>
+<li><a href="">Menu 1.2.2</a></li>
+</ul>
+</li>
+<li><a href="">Menu 1.3</a>
+<ul class="submenu">
+<li><a href="">Menu 1.3.1</a></li>
+<li><a href="">Menu 1.3.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="">Meny 2</a>
+<ul class="submenu">
+<li><a href="">Meny 2-1</a>
+<ul class="submenu">
+<li><a href="">Meny 2-1-1</a></li>
+<li><a href="">Meny 2-1-2</a></li>
+</ul>
+</li>
+<li><a href="">Meny 2-2</a>
+<ul class="submenu">
+<li><a href="">Meny 2-2-1</a></li>
+<li><a href="">Meny 2-2-2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
